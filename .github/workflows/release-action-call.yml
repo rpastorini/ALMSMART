@@ -1,0 +1,22 @@
+name: Release action
+# Call the reusable workflow release-solution-with-inputs.yml
+# Release your solution to prod when you create a new release.
+
+on:
+  release:
+      types: [created]        
+permissions:
+  contents: write
+jobs:
+  Release-solution-ALMLab:
+    uses: ./.github/workflows/release-solution-to-prod-with-inputs.yml
+    with:
+      #You can specify the solution name here
+      solution_name: SLASOL
+      #Update your values here
+      BUILD_ENVIRONMENT_URL: https://inte330rs.crm.dynamics.com/
+      PRODUCTION_ENVIRONMENT_URL: https://homo330rs.crm.dynamics.com/
+      CLIENT_ID: a6179c2f-6dab-4113-860b-62423845a814
+      TENANT_ID: ab7e124e-3be3-41ef-a0f4-9b9b8c703eef      
+    secrets:
+      envSecret: ${{ secrets.PowerPlatformSPN }}
