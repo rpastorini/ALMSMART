@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<AppModule>
+  <UniqueName>CustomerServiceTeamMember</UniqueName>
+  <IntroducedVersion>9.1.0.0</IntroducedVersion>
+  <WebResourceId>582f9a3b-69f1-49fb-b1bb-c97083800302</WebResourceId>
+  <OptimizedFor></OptimizedFor>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+  <FormFactor>1</FormFactor>
+  <ClientType>4</ClientType>
+  <NavigationType>0</NavigationType>
+  <AppModuleComponents>
+    <AppModuleComponent type="1" schemaName="activitypointer" />
+    <AppModuleComponent type="1" schemaName="appointment" />
+    <AppModuleComponent type="1" schemaName="email" />
+    <AppModuleComponent type="1" schemaName="incident" />
+    <AppModuleComponent type="1" schemaName="phonecall" />
+    <AppModuleComponent type="1" schemaName="serviceappointment" />
+    <AppModuleComponent type="1" schemaName="task" />
+    <AppModuleComponent type="26" id="{00000000-0000-0000-00aa-000010001902}" />
+    <AppModuleComponent type="26" id="{182a7fcf-d011-ea11-a81d-000d3a063867}" />
+    <AppModuleComponent type="26" id="{fdfa686a-8230-ea11-a81c-000d3afd5852}" />
+    <AppModuleComponent type="26" id="{cc98cb1f-6552-4fd8-9e2f-39a1cad2f710}" />
+    <AppModuleComponent type="26" id="{f6a2f891-6846-4b21-b922-712695afd65c}" />
+    <AppModuleComponent type="26" id="{36c60cbd-afb1-4217-9211-8189dbf5c07c}" />
+    <AppModuleComponent type="26" id="{cc6bc541-36e4-4ceb-8b3f-ab3837236cc1}" />
+    <AppModuleComponent type="26" id="{5b5f75f6-b585-4212-952a-b4cbb64e2627}" />
+    <AppModuleComponent type="26" id="{719f8513-077d-482c-9250-cc8acbb79413}" />
+    <AppModuleComponent type="26" id="{2b5f5a5d-2d23-4fe7-aa58-e77995368ae7}" />
+    <AppModuleComponent type="59" id="{fb14a378-8b1d-ea11-a81f-000d3ac39f76}" />
+    <AppModuleComponent type="59" id="{edf35649-5293-de11-97d4-00155da3b01e}" />
+    <AppModuleComponent type="59" id="{1ec1872a-23de-4294-9d7f-1b76272a5fd5}" />
+    <AppModuleComponent type="59" id="{9e6a8b06-6d14-46e6-bbf5-95c388c6eb7a}" />
+    <AppModuleComponent type="59" id="{399945c7-d07f-444e-9e54-d5fa4042290c}" />
+    <AppModuleComponent type="59" id="{1bc0ff08-cb08-45d6-8fd4-e49e6b49fe91}" />
+    <AppModuleComponent type="60" id="{9a48370e-8d1d-ea11-a81f-000d3ac39f76}" />
+    <AppModuleComponent type="60" id="{cdc622ea-2a17-4cc3-9605-44564d56cea7}" />
+    <AppModuleComponent type="60" id="{a4640db1-4962-4e79-92c6-690e627924d7}" />
+    <AppModuleComponent type="60" id="{b5ca230c-0451-4ad0-afd5-9a9dbeb7f766}" />
+    <AppModuleComponent type="60" id="{d5b4a1b2-de4f-4f86-8768-b0730001e7d1}" />
+    <AppModuleComponent type="60" id="{1d5ad078-3edb-4edc-98c6-c0c21e3125e3}" />
+    <AppModuleComponent type="60" id="{c7ff9a7d-cf27-4043-9614-c790e267dd2b}" />
+    <AppModuleComponent type="60" id="{230cd27c-0ce0-4b52-9fe5-d7a5ed94ba4e}" />
+    <AppModuleComponent type="60" id="{75ec0e60-421b-4e71-8f5d-d8de7e0aa04e}" />
+    <AppModuleComponent type="62" schemaName="CustomerServiceTeamMember" />
+  </AppModuleComponents>
+  <AppModuleRoleMaps>
+    <Role id="{350d0832-8e1b-ea11-a81d-000d3a6d6cdc}" />
+    <Role id="{627090ff-40a3-4053-8790-584edc5be201}" />
+    <Role id="{119f245c-3cc8-4b62-b31c-d1a046ced15d}" />
+  </AppModuleRoleMaps>
+  <LocalizedNames>
+    <LocalizedName description="Customer Service Team Member" languagecode="1033" />
+  </LocalizedNames>
+  <Descriptions>
+    <Description description="Enable employees to self-serve by searching for knowledge articles and creating cases​." languagecode="1033" />
+  </Descriptions>
+</AppModule>
