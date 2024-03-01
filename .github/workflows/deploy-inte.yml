@@ -57,4 +57,4 @@ jobs:
         tenant-id: ${{env.TENANT_ID}}
         solution-file: ${{ github.event.inputs.solution_outbound_folder}}/${{ github.event.inputs.solution_name }}_managed.zip
         force-overwrite: true
-        publish-changes: true
+        publish-changes: false
