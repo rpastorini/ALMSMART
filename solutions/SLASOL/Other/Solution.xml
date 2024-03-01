@@ -6,8 +6,8 @@
       <LocalizedName description="SLASOL" languagecode="1033" />
     </LocalizedNames>
     <Descriptions />
-    <Version>1.0.0.0</Version>
-    <Managed>0</Managed>
+    <Version>1.0.0.2</Version>
+    <Managed>1</Managed>
     <Publisher>
       <UniqueName>SLATEST</UniqueName>
       <LocalizedNames>
