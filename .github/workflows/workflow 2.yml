@@ -30,11 +30,12 @@ on:
        default: out/release
 env:
 #edit your values here
-  BUILD_ENVIRONMENT_URL: https://inte330rs.crm.dynamics.com/
+  ENVIRONMENT_URL: https://inte330rs.crm.dynamics.com/
   CLIENT_ID: 'a6179c2f-6dab-4113-860b-62423845a814'
   TENANT_ID: 'ab7e124e-3be3-41ef-a0f4-9b9b8c703eef'
 permissions:
   contents: write
+
 jobs:
   convert-to-managed:
     runs-on: windows-latest
@@ -45,7 +46,14 @@ jobs:
     - uses: actions/checkout@v2
       with:
         lfs: true
-
+    - name: who-am-i action
+      uses: microsoft/powerplatform-actions/who-am-i@v0
+      with:
+        environment-url: ${{env.ENVIRONMENT_URL}}
+        app-id: ${{env.CLIENT_ID}}
+        client-secret: ${{ secrets.PowerPlatformSPN }}
+        tenant-id: ${{env.TENANT_ID}}
+    
     - name: Pack solution
       uses: microsoft/powerplatform-actions/pack-solution@v0
       with:
@@ -56,7 +64,7 @@ jobs:
     - name: Import solution as managed to build env
       uses: microsoft/powerplatform-actions/import-solution@v0
       with:
-        environment-url: ${{inputs.BUILD_ENVIRONMENT_URL}}
+        environment-url: ${{inputs.ENVIRONMENT_URL}}
         app-id: ${{inputs.CLIENT_ID}}
         client-secret: ${{ secrets.envSecret }}
         tenant-id: ${{inputs.TENANT_ID}}
