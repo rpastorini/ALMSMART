@@ -9,7 +9,7 @@ permissions:
   contents: write
 jobs:
   Release-solution-ALMLab:
-    uses: ./.github/workflows/workflow 2.yml.yml
+    uses: ./.github/workflows/workflow 2.yml
     with:
       #You can specify the solution name here
       solution_name: SLASOL
