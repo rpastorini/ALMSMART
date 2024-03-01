@@ -30,7 +30,7 @@ on:
        default: out/release
 env:
 #edit your values here
-  ENVIRONMENT_URL: 'https://dev330rs.crm.dynamics.com/'
+  BUILD_ENVIRONMENT_URL: https://inte330rs.crm.dynamics.com/
   CLIENT_ID: 'a6179c2f-6dab-4113-860b-62423845a814'
   TENANT_ID: 'ab7e124e-3be3-41ef-a0f4-9b9b8c703eef'
 permissions:
