@@ -35,14 +35,12 @@ env:
   TENANT_ID: 'ab7e124e-3be3-41ef-a0f4-9b9b8c703eef'
 permissions:
   contents: write
-
 jobs:
   convert-to-managed:
     runs-on: windows-latest
     # or you can say runs-on: ubuntu-latest
     env:
       RUNNER_DEBUG: 1
-
     steps:
     - uses: actions/checkout@v2
       with:
