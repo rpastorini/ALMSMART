@@ -1,4 +1,4 @@
-name: release-solution-to-prod-reusable2
+name: release-solution-to-prod-reusable
 # Reusable workflow
 # convert solution to managed (using a build PowerPlatform environment for the conversion)
 # upload the solution to the GitHub artifacts and deploy to the PROD environment
@@ -65,30 +65,13 @@ jobs:
       uses: microsoft/powerplatform-actions/pack-solution@v0
       with:
         solution-folder: ${{ inputs.solution_source_folder}}/${{ inputs.solution_name }}
-        solution-file: ${{ inputs.solution_shipping_folder}}/${{ inputs.solution_name }}_managed.zip
+        solution-file: ${{ inputs.solution_outbound_folder}}/${{ inputs.solution_name }}_managed.zip
         solution-type: Managed
 
-    - name: Upload the ready to ship solution to GH artifact store
-      uses: actions/upload-artifact@v2
-      with:
-        name: managedSolutions
-        path: ${{ inputs.solution_shipping_folder}}/
-        
-  release-to-staging:
-    needs: [ convert-to-managed ]
-    runs-on: windows-latest
-    env:
-      RUNNER_DEBUG: 1
-
-    steps:
-    - uses: actions/checkout@v2
-      with:
-        lfs: true
-
-    - name: Import solution to prod env
+    - name: Import solution as managed to build env
       uses: microsoft/powerplatform-actions/import-solution@v0
       with:
-        environment-url: ${{inputs.PRODUCTION_ENVIRONMENT_URL}}
+        environment-url: ${{inputs.BUILD_ENVIRONMENT_URL}}
         app-id: ${{inputs.CLIENT_ID}}
         client-secret: ${{ secrets.envSecret }}
         tenant-id: ${{inputs.TENANT_ID}}
