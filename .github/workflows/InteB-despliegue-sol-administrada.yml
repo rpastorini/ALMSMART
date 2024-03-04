@@ -1,0 +1,62 @@
+name: despliegue-solucion-administrada-InteA
+#   empaquetar solución administrada en Feature Branch
+#   importar losución administrad en InteA
+
+on:
+  workflow_dispatch:
+    inputs:
+      # Change this value
+      solution_name:
+        description: 'Nombre de la solución. Sería la full o la mini, TBD'
+        required: true
+        default: SLASOL
+       #Do Not change these values
+      solution_outbound_folder:
+        description: 'staging the unpacked solution folder before check-in *do not change*'
+        required: true
+        default: out/solutions/
+      solution_source_folder: 
+       description: 'carpeta con la solución desempaquetada administrada'
+       required: true
+       default: solutions/
+
+env:
+#edit your values here
+  ENVIRONMENT_URL: 'https://inte330rs.crm.dynamics.com/'
+  CLIENT_ID: 'a6179c2f-6dab-4113-860b-62423845a814'
+  TENANT_ID: 'ab7e124e-3be3-41ef-a0f4-9b9b8c703eef'
+permissions:
+  contents: write
+
+jobs:
+  convert-to-managed:
+    runs-on: windows-latest
+    # or you can say runs-on: ubuntu-latest
+    env:
+      RUNNER_DEBUG: 1
+
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        lfs: true
+        
+  # - name: Install Power Platform Tools
+   #  uses: microsoft/powerplatform-actions/actions-install@v1.3.0
+
+    - name: Pack solution
+      uses: microsoft/powerplatform-actions/pack-solution@v1.3.0
+      with:
+        solution-folder: ${{ github.event.inputs.solution_source_folder}}/${{ github.event.inputs.solution_name }}
+        solution-file: ${{ github.event.inputs.solution_outbound_folder}}/${{ github.event.inputs.solution_name }}_managed.zip
+        solution-type: managed
+
+    - name: Importar-solucion-administrada-INTEA
+      uses: microsoft/powerplatform-actions/import-solution@v1.3.0
+      with:
+        environment-url: ${{env.ENVIRONMENT_URL}}
+        app-id: ${{env.CLIENT_ID}}
+        client-secret: ${{ secrets.PowerPlatformSPN }}
+        tenant-id: ${{env.TENANT_ID}}
+        solution-file: ${{ github.event.inputs.solution_outbound_folder}}/${{ github.event.inputs.solution_name }}_managed.zip
+        force-overwrite: true
+        publish-changes: false
