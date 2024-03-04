@@ -11,12 +11,12 @@ on:
         required: true
         default: SLASOL
        #Do Not change these values
-      solution_outbound_folder:
-        description: 'staging the unpacked solution folder before check-in *do not change*'
-        required: true
-        default: out/solutions/
+      #solution_outbound_folder:
+        #description: 'staging the unpacked solution folder before check-in *do not change*'
+        #required: true
+        #default: out/solutions/
       solution_source_folder: 
-       description: 'folder name to be created and checked in *do not change*'
+       description: 'carpeta con la solución desempaquetada administrada'
        required: true
        default: solutions/
 
@@ -44,7 +44,7 @@ jobs:
       uses: microsoft/powerplatform-actions/pack-solution@v1.3.0
       with:
         solution-folder: ${{ github.event.inputs.solution_source_folder}}/${{ github.event.inputs.solution_name }}
-        solution-file: ${{ github.event.inputs.solution_outbound_folder}}/${{ github.event.inputs.solution_name }}_managed.zip
+        solution-file: ${{ github.event.inputs.solution_source_folder}}/${{ github.event.inputs.solution_name }}_managed.zip
         solution-type: managed
 
     - name: Importar-solucion-administrada-INTEA
