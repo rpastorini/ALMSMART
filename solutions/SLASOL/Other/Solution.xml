@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ImportExportXml version="9.2.24014.212" SolutionPackageVersion="9.2" languagecode="1033" generatedBy="CrmLive" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<ImportExportXml version="9.2.24015.196" SolutionPackageVersion="9.2" languagecode="1033" generatedBy="CrmLive" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <SolutionManifest>
     <UniqueName>SLASOL</UniqueName>
     <LocalizedNames>
       <LocalizedName description="SLASOL" languagecode="1033" />
     </LocalizedNames>
     <Descriptions />
-    <Version>1.0.0.3</Version>
-    <Managed>0</Managed>
+    <Version>1.0.0.5</Version>
+    <Managed>1</Managed>
     <Publisher>
       <UniqueName>SLATEST</UniqueName>
       <LocalizedNames>
