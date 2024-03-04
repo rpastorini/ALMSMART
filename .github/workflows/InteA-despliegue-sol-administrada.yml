@@ -29,7 +29,7 @@ permissions:
   contents: write
 
 jobs:
-  convert-to-managed:
+  convertir-a-managed-importar-inteA:
     runs-on: windows-latest
     # or you can say runs-on: ubuntu-latest
     env:
@@ -49,7 +49,7 @@ jobs:
         solution-folder: ${{ github.event.inputs.solution_source_folder}}/${{ github.event.inputs.solution_name }}
         solution-file: ${{ github.event.inputs.solution_outbound_folder}}/${{ github.event.inputs.solution_name }}_managed.zip
         solution-type: managed
-
+    
     - name: Importar-solucion-administrada-INTEA
       uses: microsoft/powerplatform-actions/import-solution@v1.3.0
       with:
