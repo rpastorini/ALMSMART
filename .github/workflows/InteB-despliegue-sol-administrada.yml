@@ -1,6 +1,6 @@
-name: despliegue-solucion-administrada-InteA
+name: despliegue-solucion-administrada-InteB
 #   empaquetar solución administrada en Feature Branch
-#   importar losución administrad en InteA
+#   importar losución administrad en InteB
 
 on:
   workflow_dispatch:
@@ -22,7 +22,7 @@ on:
 
 env:
 #edit your values here
-  ENVIRONMENT_URL: 'https://inte330rs.crm.dynamics.com/'
+  ENVIRONMENT_URL: 'https://XXXXX.crm.dynamics.com/'
   CLIENT_ID: 'a6179c2f-6dab-4113-860b-62423845a814'
   TENANT_ID: 'ab7e124e-3be3-41ef-a0f4-9b9b8c703eef'
 permissions:
@@ -36,7 +36,7 @@ jobs:
       RUNNER_DEBUG: 1
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
       with:
         lfs: true
         
@@ -50,7 +50,7 @@ jobs:
         solution-file: ${{ github.event.inputs.solution_outbound_folder}}/${{ github.event.inputs.solution_name }}_managed.zip
         solution-type: managed
 
-    - name: Importar-solucion-administrada-INTEA
+    - name: Importar-solucion-administrada-INTEB
       uses: microsoft/powerplatform-actions/import-solution@v1.3.0
       with:
         environment-url: ${{env.ENVIRONMENT_URL}}
