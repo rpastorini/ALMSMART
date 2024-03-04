@@ -22,9 +22,7 @@ on:
        description: 'nombre de la carpeta que debe crearse y registrarse *no modificar*.'
        required: true
        default: solutions/
-      branch-name:
-       description: 'Branch base name to hold the commited solution; if none given, action will form one like: "<basename-of-solution-target-folder>-<yyyyMMDD-HHmm"'
-       required: false
+       
 env:
   ENVIRONMENT_URL: 'https://dev330rs.crm.dynamics.com/'
   CLIENT_ID: 'a6179c2f-6dab-4113-860b-62423845a814'
