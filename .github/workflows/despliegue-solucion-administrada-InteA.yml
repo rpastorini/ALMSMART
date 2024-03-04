@@ -1,14 +1,13 @@
-name: release-solution-to-inte
-# prepare for releasing to prod:
-#   convert solution to managed (using a build PowerPlatform environment for the conversion)
-#   upload the solution to the GitHub artifacts and deploy to the PROD environment
+name: despliegue-solucionadministrada-InteA
+#   empaquetar solución administrada en Feature Branch
+#   importar losución administrad en InteA
 
 on:
   workflow_dispatch:
     inputs:
       # Change this value
       solution_name:
-        description: 'name of the solution to worked on from Power Platform'
+        description: 'Nombre de la solución. Sería la full o la mini, TBD'
         required: true
         default: SLASOL
        #Do Not change these values
@@ -48,7 +47,7 @@ jobs:
         solution-file: ${{ github.event.inputs.solution_outbound_folder}}/${{ github.event.inputs.solution_name }}_managed.zip
         solution-type: managed
 
-    - name: Import solution as managed to INTE
+    - name: Importar-solucion-administrada-INTEA
       uses: microsoft/powerplatform-actions/import-solution@v1.3.0
       with:
         environment-url: ${{env.ENVIRONMENT_URL}}
