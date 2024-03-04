@@ -25,7 +25,6 @@ on:
       branch-name:
        description: 'Branch base name to hold the commited solution; if none given, action will form one like: "<basename-of-solution-target-folder>-<yyyyMMDD-HHmm"'
        required: false
-       default: DesaAUnmanaged
 env:
   ENVIRONMENT_URL: 'https://dev330rs.crm.dynamics.com/'
   CLIENT_ID: 'a6179c2f-6dab-4113-860b-62423845a814'
@@ -76,6 +75,7 @@ jobs:
     - name: branch-solution, preparar para PullRequest
       uses: microsoft/powerplatform-actions/branch-solution@v1.3.0
       with:
+        branch-name: DesaAUnmanaged
         solution-folder: ${{ github.event.inputs.solution_folder}}/${{ github.event.inputs.solution_name }}
         solution-target-folder: ${{ github.event.inputs.solution_target_folder}}/${{ github.event.inputs.solution_name }}
         repo-token: ${{ secrets.GITHUB_TOKEN }}
