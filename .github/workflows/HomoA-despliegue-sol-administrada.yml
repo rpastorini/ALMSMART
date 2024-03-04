@@ -1,6 +1,6 @@
-name: despliegue-solucion-administrada-HomoA
-#   empaquetar solución administrada en Solution Branch
-#   importar losución administrad en HomoA
+name: despliegue-solucion-administrada-Homo
+#   empaquetar solución administrada en Branch
+#   importar losución administrad en Homo
 
 on:
   workflow_dispatch:
@@ -50,7 +50,7 @@ jobs:
         solution-file: ${{ github.event.inputs.solution_outbound_folder}}/${{ github.event.inputs.solution_name }}_managed.zip
         solution-type: managed
 
-    - name: Importar-solucion-administrada-HOMOA
+    - name: Importar-solucion-administrada-HOMO
       uses: microsoft/powerplatform-actions/import-solution@v1.3.0
       with:
         environment-url: ${{env.ENVIRONMENT_URL}}
