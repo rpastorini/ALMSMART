@@ -1,37 +1,35 @@
-name: export-and-branch-solution-main
-# Export solution from DEV environment
-#  unpack it and prepare, commit and push a git branch with the changes
-
+name: Desa A - Branch Temp Unmanaged
+# Exportar solución desde Desa A - No Administrada
+# unpack y preparar, confirmar y generar una branch git con los cambios
 on:
   workflow_dispatch:
     inputs:
       # Change this value
       solution_name:
-        description: 'name of the solution to worked on from Power Platform'
+        description: 'Nombre de la solución. Sería la full o la mini, TBD'
         required: true
         default: SLASOL
        #Do Not change these values
       solution_exported_folder:
-        description: 'folder name for staging the exported solution *do not change*'
+        description: 'nombre de la carpeta para almacenar la solución exportada *no cambiar*.'
         required: true
         default: out/exported/
       solution_folder:
-        description: 'staging the unpacked solution folder before check-in *do not change*'
+        description: 'Preparación de la carpeta de la solución desempaquetada antes del registro *no modificar*.'
         required: true
         default: out/solutions/
       solution_target_folder: 
-       description: 'folder name to be created and checked in *do not change*'
+       description: 'nombre de la carpeta que debe crearse y registrarse *no modificar*.'
        required: true
        default: solutions/
 env:
-#edit your values here
   ENVIRONMENT_URL: 'https://dev330rs.crm.dynamics.com/'
   CLIENT_ID: 'a6179c2f-6dab-4113-860b-62423845a814'
   TENANT_ID: 'ab7e124e-3be3-41ef-a0f4-9b9b8c703eef'
 permissions:
   contents: write
 jobs:
-  export-from-dev:
+  exportar-desaA:
     runs-on: windows-latest
     # or you can say runs-on: ubuntu-latest
     env:
@@ -71,7 +69,7 @@ jobs:
         solution-type: 'Unmanaged'
         overwrite-files: true
 
-    - name: branch-solution, prepare it for a PullRequest
+    - name: branch-solution, preparar para PullRequest
       uses: microsoft/powerplatform-actions/branch-solution@v1.3.0
       with:
         solution-folder: ${{ github.event.inputs.solution_folder}}/${{ github.event.inputs.solution_name }}
