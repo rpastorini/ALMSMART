@@ -1,6 +1,6 @@
 name: Desa B - Branch Temp managed
 # Exportar solución desde Desa B - Administrada
-# unpack y preparar, confirmar y generar una branch git con los cambios
+# unpack y preparar, confirmar y generar una branch git temporal con los cambios
 on:
   workflow_dispatch:
     inputs:
