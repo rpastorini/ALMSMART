@@ -1,5 +1,5 @@
 name: Desa A - Branch Temp Both
-# Exportar solución desde Desa A - No Administrada
+# Exportar solución desde Desa A - Administrada y No Administrada
 # unpack y preparar, confirmar y generar una branch git temporal con los cambios
 on:
   workflow_dispatch:
