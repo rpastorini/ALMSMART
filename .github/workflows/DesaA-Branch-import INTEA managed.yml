@@ -38,8 +38,9 @@ env:
   TENANT_ID: 'ab7e124e-3be3-41ef-a0f4-9b9b8c703eef'
 permissions:
   contents: write
+
 jobs:
-  exportar-desaA:
+  exportar-desaA-managed:
     runs-on: windows-latest
     # or you can say runs-on: ubuntu-latest
     env:
@@ -50,19 +51,19 @@ jobs:
       with:
         lfs: true
         
-    - name: Install Power Platform Tools
-      uses: microsoft/powerplatform-actions/actions-install@v1.3.0
+    #- name: Install Power Platform Tools
+    #  uses: microsoft/powerplatform-actions/actions-install@v1.3.0
 
     - name: who-am-i action
-      uses: microsoft/powerplatform-actions/who-am-i@v1.3.0
+      uses: microsoft/powerplatform-actions/who-am-i@v0
       with:
         environment-url: ${{env.DEV_ENVIRONMENT_URL}}
         app-id: ${{env.CLIENT_ID}}
         client-secret: ${{ secrets.PowerPlatformSPN }}
         tenant-id: ${{env.TENANT_ID}}
 
-    - name: export-solution action
-      uses: microsoft/powerplatform-actions/export-solution@v1.3.0
+    - name: export-solution action -managed
+      uses: microsoft/powerplatform-actions/export-solution@v0
       with:
         environment-url: ${{env.DEV_ENVIRONMENT_URL}}
         app-id: ${{env.CLIENT_ID}}
@@ -73,7 +74,7 @@ jobs:
         managed: true
 
     - name: unpack-solution action
-      uses: microsoft/powerplatform-actions/unpack-solution@v1.3.0
+      uses: microsoft/powerplatform-actions/unpack-solution@v0
       with:
         solution-file: ${{ github.event.inputs.solution_exported_folder}}/${{ github.event.inputs.solution_name }}_managed.zip
         solution-folder: ${{ github.event.inputs.solution_folder}}/${{ github.event.inputs.solution_name }}
@@ -81,17 +82,17 @@ jobs:
         overwrite-files: true
 
     - name: branch-solution
-      uses: microsoft/powerplatform-actions/branch-solution@v1.3.0
+      uses: microsoft/powerplatform-actions/branch-solution@v0
       with:
+        clobber-branch: true
         branch-name: DesaA
         solution-folder: ${{ github.event.inputs.solution_folder}}/${{ github.event.inputs.solution_name }}
         solution-target-folder: ${{ github.event.inputs.solution_target_folder}}/${{ github.event.inputs.solution_name }}
         repo-token: ${{ secrets.GITHUB_TOKEN }}
-        clobber-branch: true
         allow-empty-commit: true
 
     - name: who-am-i action
-      uses: microsoft/powerplatform-actions/who-am-i@v1.3.0
+      uses: microsoft/powerplatform-actions/who-am-i@v0
       with:
         environment-url: ${{env.INTE_ENVIRONMENT_URL}}
         app-id: ${{env.CLIENT_ID}}
@@ -99,14 +100,14 @@ jobs:
         tenant-id: ${{env.TENANT_ID}}
 
     - name: Pack solution
-      uses: microsoft/powerplatform-actions/pack-solution@v1.3.0
+      uses: microsoft/powerplatform-actions/pack-solution@v0
       with:
         solution-folder: ${{ github.event.inputs.solution_source_folder}}/${{ github.event.inputs.solution_name }}
         solution-file: ${{ github.event.inputs.solution_outbound_folder}}/${{ github.event.inputs.solution_name }}_managed.zip
         solution-type: Managed
     
     - name: Importar-solucion-administrada-INTEA
-      uses: microsoft/powerplatform-actions/import-solution@v1.3.0
+      uses: microsoft/powerplatform-actions/import-solution@v0
       with:
         environment-url: ${{env.INTE_ENVIRONMENT_URL}}
         app-id: ${{env.CLIENT_ID}}
