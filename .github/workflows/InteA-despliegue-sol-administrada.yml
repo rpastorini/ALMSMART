@@ -49,7 +49,7 @@ jobs:
         solution-folder: ${{ github.event.inputs.solution_source_folder}}/${{ github.event.inputs.solution_name }}
         solution-file: ${{ github.event.inputs.solution_outbound_folder}}/${{ github.event.inputs.solution_name }}_managed.zip
         use-unmanaged-file-for-missing-managed: true
-        solution-type: Unmanaged
+        solution-type: Managed
     
     - name: Importar-solucion-administrada-INTEA
       uses: microsoft/powerplatform-actions/import-solution@v1.3.0
