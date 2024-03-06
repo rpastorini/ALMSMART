@@ -21,7 +21,7 @@ on:
       solution_exported_folder:
         description: 'nombre de la carpeta para almacenar la solución exportada *no cambiar*.'
         required: true
-        default: out/exported/
+        default: out/exported_m/
       solution_folder:
         description: 'Preparación de la carpeta de la solución desempaquetada antes del registro *no modificar*.'
         required: true
