@@ -85,7 +85,6 @@ jobs:
     - name: branch-solution, preparar para PullRequest
       uses: microsoft/powerplatform-actions/branch-solution@v0
       with:
-        clobber-branch: true
         branch-name: DesaA
         solution-folder: ${{ github.event.inputs.solution_folder}}/${{ github.event.inputs.solution_name }}
         solution-target-folder: ${{ github.event.inputs.solution_target_folder}}/${{ github.event.inputs.solution_name }}
