@@ -1,4 +1,4 @@
-name: DesaA-BranchTempBot
+name: DesaA-Branch Unmanaged
 # Exportar solución desde Desa A - Administrada y No Administrada
 # unpack y preparar, confirmar y generar una branch git temporal con los cambios
 on:
@@ -70,6 +70,7 @@ jobs:
         solution-folder: ${{ github.event.inputs.solution_folder}}/${{ github.event.inputs.solution_name }}
         solution-type: 'Unmanaged'
         overwrite-files: true
+        use-unmanaged-file-for-missing-managed: true
 
     - name: branch-solution, preparar para PullRequest
       uses: microsoft/powerplatform-actions/branch-solution@v0
