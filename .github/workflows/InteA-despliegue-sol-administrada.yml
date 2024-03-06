@@ -48,6 +48,7 @@ jobs:
       with:
         solution-folder: ${{ github.event.inputs.solution_source_folder}}/${{ github.event.inputs.solution_name }}
         solution-file: ${{ github.event.inputs.solution_outbound_folder}}/${{ github.event.inputs.solution_name }}_managed.zip
+        use-unmanaged-file-for-missing-managed: true
         solution-type: managed
     
     - name: Importar-solucion-administrada-INTEA
