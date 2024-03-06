@@ -90,17 +90,6 @@ jobs:
         solution-target-folder: ${{ github.event.inputs.solution_target_folder}}/${{ github.event.inputs.solution_name }}
         repo-token: ${{ secrets.GITHUB_TOKEN }}
         allow-empty-commit: true
-  
-  importar-desaA-managed:
-    runs-on: windows-latest
-    # or you can say runs-on: ubuntu-latest
-    env:
-      RUNNER_DEBUG: 1
-
-    steps:
-    - uses: actions/checkout@v4
-      with:
-        lfs: true
         
     - name: who-am-i action
       uses: microsoft/powerplatform-actions/who-am-i@v0
@@ -113,8 +102,8 @@ jobs:
     - name: Pack solution
       uses: microsoft/powerplatform-actions/pack-solution@v0
       with:
-        solution-folder: ${{ github.event.inputs.solution_source_folder}}/${{ github.event.inputs.solution_name }}
-        solution-file: ${{ github.event.inputs.solution_outbound_folder}}/${{ github.event.inputs.solution_name }}_managed.zip
+        solution-folder: ${{ github.event.inputs.solution_folder}}/${{ github.event.inputs.solution_name }}
+        solution-file: ${{ github.event.inputs.solution_exported_folder}}/${{ github.event.inputs.solution_name }}_managed.zip
         solution-type: Managed
     
     - name: Importar-solucion-administrada-INTEA
