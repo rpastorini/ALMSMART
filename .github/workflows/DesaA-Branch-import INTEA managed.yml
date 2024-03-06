@@ -56,7 +56,7 @@ jobs:
     - name: who-am-i action
       uses: microsoft/powerplatform-actions/who-am-i@v1.3.0
       with:
-        environment-url: ${{env.ENVIRONMENT_URL}}
+        environment-url: ${{env.DEV_ENVIRONMENT_URL}}
         app-id: ${{env.CLIENT_ID}}
         client-secret: ${{ secrets.PowerPlatformSPN }}
         tenant-id: ${{env.TENANT_ID}}
@@ -89,6 +89,15 @@ jobs:
         solution-target-folder: ${{ github.event.inputs.solution_target_folder}}/${{ github.event.inputs.solution_name }}
         repo-token: ${{ secrets.GITHUB_TOKEN }}
         allow-empty-commit: true
+
+    - name: who-am-i action
+      uses: microsoft/powerplatform-actions/who-am-i@v1.3.0
+      with:
+        environment-url: ${{env.INTE_ENVIRONMENT_URL}}
+        app-id: ${{env.CLIENT_ID}}
+        client-secret: ${{ secrets.PowerPlatformSPN }}
+        tenant-id: ${{env.TENANT_ID}}
+
 
     - name: Pack solution
       uses: microsoft/powerplatform-actions/pack-solution@v1.3.0
