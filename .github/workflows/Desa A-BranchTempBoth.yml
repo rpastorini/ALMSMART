@@ -1,4 +1,4 @@
-name: DesaA-BranchTempBoth2
+name: DesaA-BranchTempBoth
 # Exportar solución desde Desa A - Administrada y No Administrada
 # unpack y preparar, confirmar y generar una branch git temporal con los cambios
 on:
@@ -37,11 +37,7 @@ jobs:
     env:
       RUNNER_DEBUG: 1
 
-  deploy-desa:
-   runs-on: windows-latest
-   environment: 'desa'
-   needs: exportar-desaA  
-   steps:
+    steps:
     - uses: actions/checkout@v4
       with:
         lfs: true
