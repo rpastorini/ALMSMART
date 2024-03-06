@@ -57,7 +57,7 @@ jobs:
         client-secret: ${{ secrets.PowerPlatformSPN }}
         tenant-id: ${{env.TENANT_ID}}
 
-    - name: export-solution action-unmnaged
+    - name: export-solution action -unmanaged
       uses: microsoft/powerplatform-actions/export-solution@v0
       with:
         environment-url: ${{env.ENVIRONMENT_URL}}
@@ -67,7 +67,7 @@ jobs:
         solution-name: ${{ github.event.inputs.solution_name }}
         solution-output-file: ${{ github.event.inputs.solution_exported_folder}}/${{ github.event.inputs.solution_name }}.zip
 
-    - name: export-solution action-mnaged
+    - name: export-solution action -managed
       uses: microsoft/powerplatform-actions/export-solution@v0
       with:
         environment-url: ${{env.ENVIRONMENT_URL}}
