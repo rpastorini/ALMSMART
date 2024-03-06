@@ -1,4 +1,4 @@
-name: Desa A - Branch Temp managed
+name: Desa A - Branch  managed
 # Exportar solución desde Desa A - Administrada
 # unpack y preparar, confirmar y generar una branch git temporal con los cambios
 on:
