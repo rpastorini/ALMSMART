@@ -13,11 +13,11 @@ on:
       solution_outbound_folder:
         description: 'staging the unpacked solution folder before check-in *do not change*'
         required: true
-        default: out/solutions/
+        default: out/solutions_m/
       solution_source_folder: 
        description: 'carpeta con la solución desempaquetada administrada'
        required: true
-       default: solutions/
+       default: solutions_m/
       solution_exported_folder:
         description: 'nombre de la carpeta para almacenar la solución exportada *no cambiar*.'
         required: true
@@ -25,11 +25,11 @@ on:
       solution_folder:
         description: 'Preparación de la carpeta de la solución desempaquetada antes del registro *no modificar*.'
         required: true
-        default: out/solutions/
+        default: out/solutions_m/
       solution_target_folder: 
        description: 'nombre de la carpeta que debe crearse y registrarse *no modificar*.'
        required: true
-       default: solutions/
+       default: solutions_m/
 env:
 #edit your values here
   DEV_ENVIRONMENT_URL: 'https://dev330rs.crm.dynamics.com/'
@@ -96,7 +96,6 @@ jobs:
         app-id: ${{env.CLIENT_ID}}
         client-secret: ${{ secrets.PowerPlatformSPN }}
         tenant-id: ${{env.TENANT_ID}}
-
 
     - name: Pack solution
       uses: microsoft/powerplatform-actions/pack-solution@v1.3.0
