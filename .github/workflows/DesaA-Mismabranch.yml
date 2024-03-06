@@ -1,4 +1,4 @@
-name: DesaA-BranchTempBoth
+name: DesaA-desaABranch
 # Exportar solución desde Desa A - Administrada y No Administrada
 # unpack y preparar, confirmar y generar una branch git temporal con los cambios
 on:
@@ -8,7 +8,7 @@ on:
       solution_name:
         description: 'Nombre de la solución. Sería la full o la mini, TBD'
         required: true
-        default: SLASOL
+        default: SLASOL2
        #Do Not change these values
       solution_exported_folder:
         description: 'nombre de la carpeta para almacenar la solución exportada *no cambiar*.'
