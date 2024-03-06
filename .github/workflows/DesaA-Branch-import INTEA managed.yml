@@ -83,7 +83,6 @@ jobs:
     - name: branch-solution
       uses: microsoft/powerplatform-actions/branch-solution@v1.3.0
       with:
-        clobber-branch: true
         branch-name: DesaA
         solution-folder: ${{ github.event.inputs.solution_folder}}/${{ github.event.inputs.solution_name }}
         solution-target-folder: ${{ github.event.inputs.solution_target_folder}}/${{ github.event.inputs.solution_name }}
@@ -104,7 +103,6 @@ jobs:
       with:
         solution-folder: ${{ github.event.inputs.solution_source_folder}}/${{ github.event.inputs.solution_name }}
         solution-file: ${{ github.event.inputs.solution_outbound_folder}}/${{ github.event.inputs.solution_name }}_managed.zip
-        use-unmanaged-file-for-missing-managed: true
         solution-type: Managed
     
     - name: Importar-solucion-administrada-INTEA
