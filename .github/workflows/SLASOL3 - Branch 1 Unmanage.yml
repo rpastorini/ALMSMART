@@ -69,11 +69,11 @@ jobs:
         solution-type: 'Unmanaged'
         overwrite-files: true
 
-   # - name: branch-solution, preparar para PullRequest
-   #   uses: microsoft/powerplatform-actions/branch-solution@v1.3.0
-   #   with:
-   #     branch-name: main
-   #     solution-folder: ${{ github.event.inputs.solution_folder}}/${{ github.event.inputs.solution_name }}
-   #     solution-target-folder: ${{ github.event.inputs.solution_target_folder}}/${{ github.event.inputs.solution_name }}
-   #     repo-token: ${{ secrets.GITHUB_TOKEN }}
-   #     allow-empty-commit: true
+    - name: branch-solution, preparar para PullRequest
+      uses: microsoft/powerplatform-actions/branch-solution@v1.3.0
+      with:
+        branch-name: main
+        solution-folder: ${{ github.event.inputs.solution_folder}}/${{ github.event.inputs.solution_name }}
+        solution-target-folder: ${{ github.event.inputs.solution_target_folder}}/${{ github.event.inputs.solution_name }}
+        repo-token: ${{ secrets.GITHUB_TOKEN }}
+        allow-empty-commit: true
