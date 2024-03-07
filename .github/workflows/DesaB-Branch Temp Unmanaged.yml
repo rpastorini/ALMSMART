@@ -1,4 +1,4 @@
-name: Desa B - Branch Temp Unmanaged - NO USAR
+name: SLASOL3 - Branch 1 Unmanage
 # Exportar solución desde Desa A - No Administrada
 # unpack y preparar, confirmar y generar una branch git con los cambios
 on:
@@ -8,7 +8,7 @@ on:
       solution_name:
         description: 'Nombre de la solución. Sería la full o la mini, TBD'
         required: true
-        default: SLASOL
+        default: SLASOL3
        #Do Not change these values
       solution_exported_folder:
         description: 'nombre de la carpeta para almacenar la solución exportada *no cambiar*.'
@@ -40,8 +40,8 @@ jobs:
       with:
         lfs: true
         
-   # - name: Install Power Platform Tools
-    #  uses: microsoft/powerplatform-actions/actions-install@v1.3.0
+    - name: Install Power Platform Tools
+      uses: microsoft/powerplatform-actions/actions-install@v1.3.0
       
     - name: who-am-i action
       uses: microsoft/powerplatform-actions/who-am-i@v1.3.0
@@ -72,6 +72,7 @@ jobs:
     - name: branch-solution, preparar para PullRequest
       uses: microsoft/powerplatform-actions/branch-solution@v1.3.0
       with:
+        branch-name: DESAA-TEST
         solution-folder: ${{ github.event.inputs.solution_folder}}/${{ github.event.inputs.solution_name }}
         solution-target-folder: ${{ github.event.inputs.solution_target_folder}}/${{ github.event.inputs.solution_name }}
         repo-token: ${{ secrets.GITHUB_TOKEN }}
