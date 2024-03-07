@@ -73,7 +73,7 @@ jobs:
       uses: microsoft/powerplatform-actions/branch-solution@v1.3.0
       with:
         branch-name: DESAA-TEST
-        clobber-branch: true
+        #clobber-branch: true
         solution-folder: ${{ github.event.inputs.solution_folder}}/${{ github.event.inputs.solution_name }}
         solution-target-folder: ${{ github.event.inputs.solution_target_folder}}/${{ github.event.inputs.solution_name }}
         repo-token: ${{ secrets.GITHUB_TOKEN }}
