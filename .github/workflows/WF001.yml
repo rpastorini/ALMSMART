@@ -91,6 +91,7 @@ jobs:
     #    allow-empty-commit: true
   
   importar-intea-managed:
+    needs: exportar-desaA-managed
     runs-on: windows-latest
     environment: INTE
     env:
