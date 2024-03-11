@@ -45,7 +45,8 @@ jobs:
     # or you can say runs-on: ubuntu-latest
     env:
       RUNNER_DEBUG: 1
-    environment: INTE
+    
+  
     steps:
     - uses: actions/checkout@v4
       with:
@@ -90,7 +91,9 @@ jobs:
     #   solution-target-folder: ${{ github.event.inputs.solution_target_folder}}/${{ github.event.inputs.solution_name }}
     #    repo-token: ${{ secrets.GITHUB_TOKEN }}
     #    allow-empty-commit: true
-        
+    
+        environment: INTE
+    
     - name: who-am-i action
       uses: microsoft/powerplatform-actions/who-am-i@v1.3.0
       with:
