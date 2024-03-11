@@ -80,15 +80,15 @@ jobs:
         solution-type: 'Managed'
         overwrite-files: true
 
-    #- name: branch-solution
-    #  uses: microsoft/powerplatform-actions/branch-solution@v0
-    #  with:
-    #   clobber-branch: true
-    #    branch-name: DesaA
-    #    solution-folder: ${{ github.event.inputs.solution_folder}}/${{ github.event.inputs.solution_name }}
-    #   solution-target-folder: ${{ github.event.inputs.solution_target_folder}}/${{ github.event.inputs.solution_name }}
-    #    repo-token: ${{ secrets.GITHUB_TOKEN }}
-    #    allow-empty-commit: true
+    - name: branch-solution
+      uses: microsoft/powerplatform-actions/branch-solution@v0
+      with:
+       clobber-branch: true
+       branch-name: main
+       solution-folder: ${{ github.event.inputs.solution_folder}}/${{ github.event.inputs.solution_name }}
+       solution-target-folder: ${{ github.event.inputs.solution_target_folder}}/${{ github.event.inputs.solution_name }}
+       repo-token: ${{ secrets.GITHUB_TOKEN }}
+       allow-empty-commit: true
   
   importar-intea-managed:
     needs: exportar-desaA-managed
