@@ -1,4 +1,4 @@
-name: DesaA-desaABranch - 
+name: WF000-desaABranch
 # Exportar solución desde Desa A - Administrada y No Administrada
 # unpack y preparar, confirmar y generar una branch git temporal con los cambios
 on:
