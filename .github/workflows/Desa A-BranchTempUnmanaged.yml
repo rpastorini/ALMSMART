@@ -1,5 +1,5 @@
 name: DesaA-Branch Unmanaged
-# Exportar solución desde Desa A - Administrada y No Administrada
+# Exportar solución desde Desa A - No Administrada
 # unpack y preparar, confirmar y generar una branch git temporal con los cambios
 on:
   workflow_dispatch:
