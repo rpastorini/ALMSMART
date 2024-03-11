@@ -1,4 +1,4 @@
-name: Desa A - Branch managed import INTE A
+name: WF1-DesaA-Branch managed import INTE A
 # Exportar solución desde Desa A - Administrada
 # unpack e importar en INTEA
 on:
