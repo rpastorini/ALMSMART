@@ -1,4 +1,4 @@
-name: WF2-TEMPORAL-BRANCH importar en INTE A/HOMOLOGACION
+name: WF001-TEMPORAL-BRANCH importar en INTE A/HOMOLOGACION
 # Empaquetar managed desde TEMPORAL-BRANCH
 # importar en AMBIENTE destino
 on:
