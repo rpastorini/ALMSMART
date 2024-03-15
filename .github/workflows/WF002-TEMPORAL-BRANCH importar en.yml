@@ -34,13 +34,14 @@ env:
 #edit your values here
   DEV_ENVIRONMENT_URL: 'https://dev330rs.crm.dynamics.com/'
   INTE_ENVIRONMENT_URL: 'https://inte330rs.crm.dynamics.com/'
+  HOM_ENVIRONMENT_URL: 'https://homo330rs.crm.dynamics.com/'
   CLIENT_ID: 'a6179c2f-6dab-4113-860b-62423845a814'
   TENANT_ID: 'ab7e124e-3be3-41ef-a0f4-9b9b8c703eef'
 permissions:
   contents: write
 
 jobs:
-  exportar-desaA-managed:
+  importar-managed:
     runs-on: windows-latest
     env:
       RUNNER_DEBUG: 1
@@ -50,53 +51,10 @@ jobs:
       with:
         lfs: true
         
-    - name: Install Power Platform Tools
-      uses: microsoft/powerplatform-actions/actions-install@v1.3.0
+    - uses: microsoft/powerplatform-actions/actions-install@v1
 
     - name: who-am-i action
-      uses: microsoft/powerplatform-actions/who-am-i@v1.3.0
-      with:
-        environment-url: ${{env.DEV_ENVIRONMENT_URL}}
-        app-id: ${{env.CLIENT_ID}}
-        client-secret: ${{ secrets.PowerPlatformSPN }}
-        tenant-id: ${{env.TENANT_ID}}
-
-    #- name: export-solution action -managed
-    #  uses: microsoft/powerplatform-actions/export-solution@v1.3.0
-    #  with:
-    #    environment-url: ${{env.DEV_ENVIRONMENT_URL}}
-    #    app-id: ${{env.CLIENT_ID}}
-    #    client-secret: ${{ secrets.PowerPlatformSPN }}
-    #    tenant-id: ${{env.TENANT_ID}}
-    #   solution-name: ${{ github.event.inputs.solution_name }}
-    #    solution-output-file: ${{ github.event.inputs.solution_exported_folder}}/${{ github.event.inputs.solution_name }}_managed.zip
-    #    managed: true
-
-    #- name: unpack-solution action
-    #  uses: microsoft/powerplatform-actions/unpack-solution@v1.3.0
-    #  with:
-    #    solution-file: ${{ github.event.inputs.solution_exported_folder}}/${{ github.event.inputs.solution_name }}_managed.zip
-    #    solution-folder: ${{ github.event.inputs.solution_folder}}/${{ github.event.inputs.solution_name }}
-    #    solution-type: 'Managed'
-    #    overwrite-files: true
-  
-  importar-intea-managed:
-    needs: exportar-desaA-managed
-    runs-on: windows-latest
-    environment: INTE
-    env:
-      RUNNER_DEBUG: 1 
-
-    steps:
-    - uses: actions/checkout@v4
-      with:
-        lfs: true
-        
-    - name: Install Power Platform Tools
-      uses: microsoft/powerplatform-actions/actions-install@v1.3.0
-      
-    - name: who-am-i action
-      uses: microsoft/powerplatform-actions/who-am-i@v1.3.0
+      uses: microsoft/powerplatform-actions/who-am-i@v1
       with:
         environment-url: ${{env.INTE_ENVIRONMENT_URL}}
         app-id: ${{env.CLIENT_ID}}
@@ -104,14 +62,14 @@ jobs:
         tenant-id: ${{env.TENANT_ID}}
 
     - name: Pack solution
-      uses: microsoft/powerplatform-actions/pack-solution@v1.3.0
+      uses: microsoft/powerplatform-actions/pack-solution@v1
       with:
         solution-folder: solutions/${{ github.event.inputs.solution_name }}
         solution-file: solutions/${{ github.event.inputs.solution_name }}_managed.zip
         solution-type: Managed
         
     - name: Importar-solucion-administrada-INTEA
-      uses: microsoft/powerplatform-actions/import-solution@v1.3.0
+      uses: microsoft/powerplatform-actions/import-solution@v1
       with:
         environment-url: ${{env.INTE_ENVIRONMENT_URL}}
         app-id: ${{env.CLIENT_ID}}
