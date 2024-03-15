@@ -56,7 +56,7 @@ jobs:
         solution-file: ${{ github.event.inputs.solution_exported_folder}}/${{ github.event.inputs.solution_name }}_managed.zip
         solution-type: Managed
         
-    - name: Importar-solucion-administrada-INTEA
+    - name: Importar-solucion-administrada
       uses: microsoft/powerplatform-actions/import-solution@v1
       with:
         environment-url: ${{env.INTE_ENVIRONMENT_URL}}
