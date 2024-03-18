@@ -9,7 +9,7 @@ on:
       solution_name:
         description: 'name of the solution to worked on from Power Platform'
         required: true
-        default: ALMLab
+        default: SLASOL3
        #Do Not change these values
       solution_exported_folder:
         description: 'folder name for staging the exported solution *do not change*'
@@ -25,9 +25,9 @@ on:
        default: solution
 env:
 #edit your values here
-  ENVIRONMENT_URL: '<URL OF YOUR DEV ENVIRONMENT>'
-  CLIENT_ID: '<TYPE YOUR APPLICATION ID HERE>'
-  TENANT_ID: '<TYPE YOUR TENANT ID HERE>'
+  ENVIRONMENT_URL: 'https://dev330rs.crm.dynamics.com/'
+  CLIENT_ID: 'a6179c2f-6dab-4113-860b-62423845a814'
+  TENANT_ID: 'ab7e124e-3be3-41ef-a0f4-9b9b8c703eef'
 permissions:
   contents: write
 jobs:
@@ -38,7 +38,7 @@ jobs:
       RUNNER_DEBUG: 1
 
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
       with:
         lfs: true
 
