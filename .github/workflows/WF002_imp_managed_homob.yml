@@ -61,7 +61,7 @@ jobs:
       with:
         environment-url: ${{env.HOM_ENVIRONMENT_URL}}
         app-id: ${{env.CLIENT_ID}}
-        client-secret: ${{ secrets.APP_A }}
+        client-secret: ${{ secrets.APP_B }}
         tenant-id: ${{env.TENANT_ID}}
         solution-file: ${{ github.event.inputs.solution_exported_folder}}/${{ github.event.inputs.solution_name }}_managed.zip
         publish-changes: false
