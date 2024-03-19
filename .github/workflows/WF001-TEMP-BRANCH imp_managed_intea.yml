@@ -17,7 +17,7 @@ on:
       solution_folder:
         description: 'Preparación de la carpeta de la solución desempaquetada antes del registro *no modificar*.'
         required: true
-        default: out/solution/
+        default: solution/
 env:
 #edit your values here
   DEV_ENVIRONMENT_URL: 'https://desaabg.crm.dynamics.com/'
