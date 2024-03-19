@@ -1,5 +1,7 @@
-name: WF002-MAIN importar en HOMO B
-# Empaquetar managed desde TEMPORAL-BRANCH
+
+name: WF002-RELEASE importar en HOMO B
+# Empaquetar managed desde branch RELEASE
+
 # importar en AMBIENTE destino
 on:
   workflow_dispatch:
@@ -18,13 +20,13 @@ on:
         description: 'Preparación de la carpeta de la solución desempaquetada antes del registro *no modificar*.'
         required: true
         default: solution/
+       
 env:
 #edit your values here
-  DEV_ENVIRONMENT_URL: 'https://desaabg.crm.dynamics.com/'
-  INTE_ENVIRONMENT_URL: 'https://inteabg.crm.dynamics.com/'
   HOM_ENVIRONMENT_URL: 'https://homobbg.crm.dynamics.com/'
-  CLIENT_ID: 'abde9fd6-c25b-4c3a-ad13-d53e0f8438d7'
-  TENANT_ID: '97a862df-3e59-4f64-ba58-146ecb5993e7'
+  CLIENT_ID: 'a6179c2f-6dab-4113-860b-62423845a814'
+  TENANT_ID: 'ab7e124e-3be3-41ef-a0f4-9b9b8c703eef'
+
 permissions:
   contents: write
 
@@ -33,7 +35,7 @@ jobs:
     runs-on: windows-latest
     env:
       RUNNER_DEBUG: 1
-      
+
     steps:
     - uses: actions/checkout@v4
       with:
