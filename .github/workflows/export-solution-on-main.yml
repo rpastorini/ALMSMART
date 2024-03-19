@@ -1,0 +1,95 @@
+name: export-solution-on-main
+# Export solution from DEV environment
+#  unpack it and prepare, commit and push a git branch with the changes
+
+on:
+  workflow_dispatch:
+    inputs:
+      # Change this value
+      solution_name:
+        description: 'name of the solution to worked on from Power Platform'
+        required: true
+        default: SLASOL3
+       #Do Not change these values
+      solution_exported_folder:
+        description: 'folder name for staging the exported solution *do not change*'
+        required: true
+        default: /out
+      solution_folder:
+        description: 'staging the unpacked solution folder before check-in *do not change*'
+        required: true
+        default: /solution
+      solution_target_folder: 
+       description: 'folder name to be created and checked in *do not change*'
+       required: true
+       default: solution
+env:
+#edit your values here
+  ENVIRONMENT_URL: 'https://desaabg.crm.dynamics.com/'
+  CLIENT_ID: 'a6179c2f-6dab-4113-860b-62423845a814'
+  TENANT_ID: 'ab7e124e-3be3-41ef-a0f4-9b9b8c703eef'
+permissions:
+  contents: write
+jobs:
+  export-from-dev:
+    runs-on: windows-latest
+    # or you can say runs-on: ubuntu-latest
+    env:
+      RUNNER_DEBUG: 1
+
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        lfs: true
+
+    - uses: microsoft/powerplatform-actions/actions-install@v1
+
+    - name: who-am-i action
+      uses: microsoft/powerplatform-actions/who-am-i@v1
+      with:
+        environment-url: ${{env.ENVIRONMENT_URL}}
+        app-id: ${{env.CLIENT_ID}}
+        client-secret: ${{ secrets.APP_A }}
+        tenant-id: ${{env.TENANT_ID}}
+        
+    
+
+    - name: export-solution action -unmanaged
+      uses: microsoft/powerplatform-actions/export-solution@v1
+      with:
+        environment-url: ${{env.ENVIRONMENT_URL}}
+        app-id: ${{env.CLIENT_ID}}
+        client-secret: ${{ secrets.APP_A }}
+        tenant-id: ${{env.TENANT_ID}}
+        solution-name: ${{ github.event.inputs.solution_name }}
+        solution-output-file: ${{ github.event.inputs.solution_exported_folder}}/${{ github.event.inputs.solution_name }}.zip
+
+    - name: export-solution action -managed
+      uses: microsoft/powerplatform-actions/export-solution@v1
+      with:
+        environment-url: ${{env.ENVIRONMENT_URL}}
+        app-id: ${{env.CLIENT_ID}}
+        client-secret: ${{ secrets.APP_A }}
+        tenant-id: ${{env.TENANT_ID}}
+        solution-name: ${{ github.event.inputs.solution_name }}
+        managed: true
+        solution-output-file: ${{ github.event.inputs.solution_exported_folder}}/${{ github.event.inputs.solution_name }}_managed.zip
+
+    - name: unpack-solution action
+      uses: microsoft/powerplatform-actions/unpack-solution@v1
+      with:
+        solution-file: ${{ github.event.inputs.solution_exported_folder}}/${{ github.event.inputs.solution_name }}.zip
+        solution-folder: ${{ github.event.inputs.solution_folder}}/${{ github.event.inputs.solution_name }}
+        solution-type: 'Both'
+        overwrite-files: true
+        
+    - name: Commit changes
+      run: |
+        cp -r ${{ github.event.inputs.solution_folder}}/${{ github.event.inputs.solution_name }} ./${{ github.event.inputs.solution_folder}}/${{ github.event.inputs.solution_name }} 
+        git config --global user.email "no-reply@github.com"
+        git config --global user.name "GitHub Actions"
+        git checkout main
+        git add --all 
+        git commit -m "Updates from the dev environment"
+        git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
+        git push
