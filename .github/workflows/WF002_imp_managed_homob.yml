@@ -23,8 +23,8 @@ env:
   DEV_ENVIRONMENT_URL: 'https://desaabg.crm.dynamics.com/'
   INTE_ENVIRONMENT_URL: 'https://inteabg.crm.dynamics.com/'
   HOM_ENVIRONMENT_URL: 'https://homobbg.crm.dynamics.com/'
-  CLIENT_ID: 'a6179c2f-6dab-4113-860b-62423845a814'
-  TENANT_ID: 'ab7e124e-3be3-41ef-a0f4-9b9b8c703eef'
+  CLIENT_ID: 'abde9fd6-c25b-4c3a-ad13-d53e0f8438d7'
+  TENANT_ID: '97a862df-3e59-4f64-ba58-146ecb5993e7'
 permissions:
   contents: write
 
