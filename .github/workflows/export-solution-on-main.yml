@@ -85,7 +85,7 @@ jobs:
         
     - name: Commit changes
       run: |
-        cp -f ${{ github.event.inputs.solution_folder}}/${{ github.event.inputs.solution_name }} ./${{ github.event.inputs.solution_folder}}/${{ github.event.inputs.solution_name }} 
+        cp -Force ${{ github.event.inputs.solution_folder}}/${{ github.event.inputs.solution_name }} ./${{ github.event.inputs.solution_folder}}/${{ github.event.inputs.solution_name }} 
         git config --global user.email "no-reply@github.com"
         git config --global user.name "GitHub Actions"
         git checkout main
