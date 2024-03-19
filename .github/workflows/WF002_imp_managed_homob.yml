@@ -1,5 +1,7 @@
+
 name: WF002-RELEASE importar en HOMO B
 # Empaquetar managed desde branch RELEASE
+
 # importar en AMBIENTE destino
 on:
   workflow_dispatch:
@@ -18,12 +20,13 @@ on:
         description: 'Preparación de la carpeta de la solución desempaquetada antes del registro *no modificar*.'
         required: true
         default: solution/
-        
+       
 env:
 #edit your values here
   HOM_ENVIRONMENT_URL: 'https://homobbg.crm.dynamics.com/'
   CLIENT_ID: 'a6179c2f-6dab-4113-860b-62423845a814'
   TENANT_ID: 'ab7e124e-3be3-41ef-a0f4-9b9b8c703eef'
+
 permissions:
   contents: write
 
@@ -32,12 +35,14 @@ jobs:
     runs-on: windows-latest
     env:
       RUNNER_DEBUG: 1
-   
+
     steps:
     - uses: actions/checkout@v4
       with:
         lfs: true
+        
     - uses: microsoft/powerplatform-actions/actions-install@v1
+
     - name: who-am-i action
       uses: microsoft/powerplatform-actions/who-am-i@v1
       with:
