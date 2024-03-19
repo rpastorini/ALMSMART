@@ -1,5 +1,5 @@
 name: WF001-main importar en INTE A
-# Empaquetar managed desde TEMPORAL-BRANCH
+# Empaquetar managed desde DEV
 # importar en AMBIENTE destino
 on:
   workflow_dispatch:
@@ -20,9 +20,7 @@ on:
         default: solution/
 env:
 #edit your values here
-  DEV_ENVIRONMENT_URL: 'https://desaabg.crm.dynamics.com/'
   INTE_ENVIRONMENT_URL: 'https://inteabg.crm.dynamics.com/'
-  HOM_ENVIRONMENT_URL: 'https://homoabg.crm.dynamics.com/'
   CLIENT_ID: 'a6179c2f-6dab-4113-860b-62423845a814'
   TENANT_ID: 'ab7e124e-3be3-41ef-a0f4-9b9b8c703eef'
 permissions:
