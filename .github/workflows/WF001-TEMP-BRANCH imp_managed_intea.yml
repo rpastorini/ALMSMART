@@ -13,11 +13,11 @@ on:
       solution_exported_folder:
         description: 'nombre de la carpeta para almacenar la solución exportada *no cambiar*.'
         required: true
-        default: out/exported_m/
+        default: out/exported/
       solution_folder:
         description: 'Preparación de la carpeta de la solución desempaquetada antes del registro *no modificar*.'
         required: true
-        default: out/solutions_m/
+        default: out/solution/
 env:
 #edit your values here
   DEV_ENVIRONMENT_URL: 'https://desaabg.crm.dynamics.com/'
