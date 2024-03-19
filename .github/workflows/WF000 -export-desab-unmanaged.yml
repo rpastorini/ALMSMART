@@ -1,5 +1,5 @@
 name: export-solution-on-main
-# Export solution from DEV environment
+# Export solution from desab environment
 #  unpack it and prepare, commit and push a git branch with the changes
 
 on:
@@ -25,9 +25,9 @@ on:
        default: solution
 env:
 #edit your values here
-  ENVIRONMENT_URL: 'https://desaabg.crm.dynamics.com/'
-  CLIENT_ID: 'a6179c2f-6dab-4113-860b-62423845a814'
-  TENANT_ID: 'ab7e124e-3be3-41ef-a0f4-9b9b8c703eef'
+  ENVIRONMENT_URL: 'https://desabbg.crm.dynamics.com/'
+  CLIENT_ID: 'abde9fd6-c25b-4c3a-ad13-d53e0f8438d7'
+  TENANT_ID: '97a862df-3e59-4f64-ba58-146ecb5993e7'
 permissions:
   contents: write
 jobs:
@@ -49,17 +49,15 @@ jobs:
       with:
         environment-url: ${{env.ENVIRONMENT_URL}}
         app-id: ${{env.CLIENT_ID}}
-        client-secret: ${{ secrets.APP_A }}
-        tenant-id: ${{env.TENANT_ID}}
-        
-    
+        client-secret: ${{ secrets.APP_B }}
+        tenant-id: ${{env.TENANT_ID}}    
 
     - name: export-solution action -unmanaged
       uses: microsoft/powerplatform-actions/export-solution@v1
       with:
         environment-url: ${{env.ENVIRONMENT_URL}}
         app-id: ${{env.CLIENT_ID}}
-        client-secret: ${{ secrets.APP_A }}
+        client-secret: ${{ secrets.APP_B }}
         tenant-id: ${{env.TENANT_ID}}
         solution-name: ${{ github.event.inputs.solution_name }}
         solution-output-file: ${{ github.event.inputs.solution_exported_folder}}/${{ github.event.inputs.solution_name }}.zip
@@ -69,7 +67,7 @@ jobs:
       with:
         environment-url: ${{env.ENVIRONMENT_URL}}
         app-id: ${{env.CLIENT_ID}}
-        client-secret: ${{ secrets.APP_A }}
+        client-secret: ${{ secrets.APP_B }}
         tenant-id: ${{env.TENANT_ID}}
         solution-name: ${{ github.event.inputs.solution_name }}
         managed: true
@@ -97,7 +95,7 @@ jobs:
     - name: branch-solution, preparar para PullRequest
       uses: microsoft/powerplatform-actions/branch-solution@v1
       with:
-        branch-name: TEMP_BRANCH_desaA
+        branch-name: TEMP_BRANCH_desaB
         solution-folder: ${{ github.event.inputs.solution_folder}}/${{ github.event.inputs.solution_name }}
         solution-target-folder: ${{ github.event.inputs.solution_target_folder}}/${{ github.event.inputs.solution_name }}
         repo-token: ${{ secrets.GITHUB_TOKEN }}
