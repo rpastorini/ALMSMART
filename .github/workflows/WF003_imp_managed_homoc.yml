@@ -1,5 +1,5 @@
-name: WF002-MAIN importar en HOMO C
-# Empaquetar managed desde TEMPORAL-BRANCH
+name: WF002-RELEASE importar en HOMO C
+# Empaquetar managed desde branch RELEASE
 # importar en AMBIENTE destino
 on:
   workflow_dispatch:
