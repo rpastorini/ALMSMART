@@ -38,14 +38,13 @@ jobs:
     runs-on: windows-latest
     env:
       RUNNER_DEBUG: 1
-      
+   
     steps:
     - uses: actions/checkout@v4
       with:
         lfs: true
-        
+        BRANCH: ${{ inputs.BRANCH }}
     - uses: microsoft/powerplatform-actions/actions-install@v1
-
     - name: who-am-i action
       uses: microsoft/powerplatform-actions/who-am-i@v1
       with:
