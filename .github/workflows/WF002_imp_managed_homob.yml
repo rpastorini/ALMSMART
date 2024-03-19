@@ -18,6 +18,11 @@ on:
         description: 'Preparación de la carpeta de la solución desempaquetada antes del registro *no modificar*.'
         required: true
         default: solution/
+      BRANCH:
+        description: 'Branch to use'
+        required: true
+        default: 'RELEASE'
+        
 env:
 #edit your values here
   DEV_ENVIRONMENT_URL: 'https://desaabg.crm.dynamics.com/'
@@ -38,7 +43,6 @@ jobs:
     - uses: actions/checkout@v4
       with:
         lfs: true
-        ref: RELEASE
         
     - uses: microsoft/powerplatform-actions/actions-install@v1
 
