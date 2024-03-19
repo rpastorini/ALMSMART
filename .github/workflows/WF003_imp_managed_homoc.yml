@@ -1,5 +1,6 @@
-name: WF001-TEMPORAL-BRANCH importar en INTE A/HOMOLOGACION
-# Empaquetar managed desde TEMPORAL-BRANCH
+
+name: WF002-RELEASE importar en HOMO C
+# Empaquetar managed desde branch RELEASE
 # importar en AMBIENTE destino
 on:
   workflow_dispatch:
@@ -13,18 +14,17 @@ on:
       solution_exported_folder:
         description: 'nombre de la carpeta para almacenar la solución exportada *no cambiar*.'
         required: true
-        default: out/exported_m/
+        default: out/exported/
       solution_folder:
         description: 'Preparación de la carpeta de la solución desempaquetada antes del registro *no modificar*.'
         required: true
-        default: out/solutions_m/
+        default: solution/
+        
 env:
 #edit your values here
-  DEV_ENVIRONMENT_URL: 'https://desaabg.crm.dynamics.com/'
-  INTE_ENVIRONMENT_URL: 'https://inteabg.crm.dynamics.com/'
-  HOM_ENVIRONMENT_URL: 'https://homoabg.crm.dynamics.com/'
-  CLIENT_ID: 'a6179c2f-6dab-4113-860b-62423845a814'
-  TENANT_ID: 'ab7e124e-3be3-41ef-a0f4-9b9b8c703eef'
+  HOM_ENVIRONMENT_URL: 'https://homocbg.crm.dynamics.com/'
+  CLIENT_ID: '4030c838-68a1-4f5f-a0f1-11f789946181'
+  TENANT_ID: 'f1babdc2-016c-44c7-963f-a0deb78b2c32'
 permissions:
   contents: write
 
@@ -33,20 +33,18 @@ jobs:
     runs-on: windows-latest
     env:
       RUNNER_DEBUG: 1
-      
+   
     steps:
     - uses: actions/checkout@v4
       with:
         lfs: true
-        
     - uses: microsoft/powerplatform-actions/actions-install@v1
-
     - name: who-am-i action
       uses: microsoft/powerplatform-actions/who-am-i@v1
       with:
-        environment-url: ${{env.INTE_ENVIRONMENT_URL}}
+        environment-url: ${{env.HOM_ENVIRONMENT_URL}}
         app-id: ${{env.CLIENT_ID}}
-        client-secret: ${{ secrets.APP_A }}
+        client-secret: ${{ secrets.APP_C }}
         tenant-id: ${{env.TENANT_ID}}
 
     - name: Pack solution
@@ -59,9 +57,9 @@ jobs:
     - name: Importar-solucion-administrada
       uses: microsoft/powerplatform-actions/import-solution@v1
       with:
-        environment-url: ${{env.INTE_ENVIRONMENT_URL}}
+        environment-url: ${{env.HOM_ENVIRONMENT_URL}}
         app-id: ${{env.CLIENT_ID}}
-        client-secret: ${{ secrets.APP_A }}
+        client-secret: ${{ secrets.APP_C }}
         tenant-id: ${{env.TENANT_ID}}
         solution-file: ${{ github.event.inputs.solution_exported_folder}}/${{ github.event.inputs.solution_name }}_managed.zip
         publish-changes: false
