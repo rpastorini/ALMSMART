@@ -1,4 +1,4 @@
-name: export-solution-on-main
+name: export-solution-on-desaa
 # Export solution from DEV environment
 #  unpack it and prepare, commit and push a git branch with the changes
 
