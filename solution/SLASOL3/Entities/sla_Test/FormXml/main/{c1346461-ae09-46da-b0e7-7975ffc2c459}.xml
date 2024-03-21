@@ -67,6 +67,14 @@
                         <control id="sla_camponuevo7" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="sla_camponuevo7" disabled="false" />
                       </cell>
                     </row>
+                    <row>
+                      <cell id="{f388f855-690c-4c1a-a3db-e84c21df92f4}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Campo Nuevo 5" languagecode="1033" />
+                        </labels>
+                        <control id="sla_camponuevo5" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="sla_camponuevo5" disabled="false" />
+                      </cell>
+                    </row>
                   </rows>
                 </section>
               </sections>
