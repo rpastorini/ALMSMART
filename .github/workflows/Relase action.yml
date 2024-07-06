@@ -19,4 +19,4 @@ jobs:
       CLIENT_ID: <APP_ID>
       TENANT_ID: <TENANT_ID>      
     secrets:
-      envSecret: ${{ secrets.PowerPlatformSPN }}
+      envSecret: ${{ secrets.GITHUBAPPB }}
