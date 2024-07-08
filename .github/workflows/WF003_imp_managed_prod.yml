@@ -1,7 +1,7 @@
 
-name: WF002-RELEASE importar en HOMO C
+name: WF003-RELEASE importar en PRODUCCIÓN
 # Empaquetar managed desde branch RELEASE
-# importar en AMBIENTE destino
+# importar en PRODUCCION
 on:
   workflow_dispatch:
     inputs:
