@@ -1,5 +1,5 @@
 name: export-solution-on-desaa
-# Export solution from DEV environment
+# Export solution from DESAA environment
 #  unpack it and prepare, commit and push a git branch with the changes
 
 on:
@@ -9,7 +9,7 @@ on:
       solution_name:
         description: 'name of the solution to worked on from Power Platform'
         required: true
-        default: SLASOL3
+        default: DEMOSOL01
        #Do Not change these values
       solution_exported_folder:
         description: 'folder name for staging the exported solution *do not change*'
