@@ -9,7 +9,7 @@ on:
       solution_name:
         description: 'name of the solution to worked on from Power Platform'
         required: true
-        default: SLASOL3
+        default: DEMOSOL01
        #Do Not change these values
       solution_exported_folder:
         description: 'folder name for staging the exported solution *do not change*'
@@ -25,9 +25,9 @@ on:
        default: solution
 env:
 #edit your values here
-  ENVIRONMENT_URL: 'https://desabbg.crm.dynamics.com/'
-  CLIENT_ID: 'abde9fd6-c25b-4c3a-ad13-d53e0f8438d7'
-  TENANT_ID: '97a862df-3e59-4f64-ba58-146ecb5993e7'
+  ENVIRONMENT_URL: 'https://smartdemodesab.crm.dynamics.com/'
+  CLIENT_ID: 'a939822b-df70-4c40-a6cb-66446c1c798e'
+  TENANT_ID: 'f0474298-6f07-4eb9-b686-421dc9d20959'
 permissions:
   contents: write
 jobs:
@@ -49,7 +49,7 @@ jobs:
       with:
         environment-url: ${{env.ENVIRONMENT_URL}}
         app-id: ${{env.CLIENT_ID}}
-        client-secret: ${{ secrets.APP_B }}
+        client-secret: ${{ secrets.GITHUBAPPB }}
         tenant-id: ${{env.TENANT_ID}}    
 
     - name: export-solution action -unmanaged
@@ -57,7 +57,7 @@ jobs:
       with:
         environment-url: ${{env.ENVIRONMENT_URL}}
         app-id: ${{env.CLIENT_ID}}
-        client-secret: ${{ secrets.APP_B }}
+        client-secret: ${{ secrets.GITHUBAPPB }}
         tenant-id: ${{env.TENANT_ID}}
         solution-name: ${{ github.event.inputs.solution_name }}
         solution-output-file: ${{ github.event.inputs.solution_exported_folder}}/${{ github.event.inputs.solution_name }}.zip
@@ -67,7 +67,7 @@ jobs:
       with:
         environment-url: ${{env.ENVIRONMENT_URL}}
         app-id: ${{env.CLIENT_ID}}
-        client-secret: ${{ secrets.APP_B }}
+        client-secret: ${{ secrets.GITHUBAPPB }}
         tenant-id: ${{env.TENANT_ID}}
         solution-name: ${{ github.event.inputs.solution_name }}
         managed: true
