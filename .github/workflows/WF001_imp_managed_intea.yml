@@ -1,4 +1,4 @@
-name: WF001-main importar en INTE A
+name: WF001b-main importar en INTE A
 # Empaquetar managed desde DEV
 # importar en AMBIENTE destino
 on:
