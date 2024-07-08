@@ -1,5 +1,5 @@
-name: export-solution-on-desaa
-# Export solution from DESAA environment
+name: export-solution-desde-desaa > branch
+# Export solution from DESAA a branch managed-unmanaged. 
 #  unpack it and prepare, commit and push a git branch with the changes
 
 on:
@@ -50,9 +50,7 @@ jobs:
         environment-url: ${{env.ENVIRONMENT_URL}}
         app-id: ${{env.CLIENT_ID}}
         client-secret: ${{ secrets.GITHUBAPPA }}
-        tenant-id: ${{env.TENANT_ID}}
-        
-    
+        tenant-id: ${{env.TENANT_ID}}  
 
     - name: export-solution action -unmanaged
       uses: microsoft/powerplatform-actions/export-solution@v1
@@ -82,19 +80,8 @@ jobs:
         solution-folder: ${{ github.event.inputs.solution_folder}}/${{ github.event.inputs.solution_name }}
         solution-type: 'Both'
         overwrite-files: true
-        
-    - name: Commit changes
-      run: |
-        cp -Force ${{ github.event.inputs.solution_folder}}/${{ github.event.inputs.solution_name }} ./${{ github.event.inputs.solution_folder}}/${{ github.event.inputs.solution_name }} 
-        git config --global user.email "no-reply@github.com"
-        git config --global user.name "GitHub Actions"
-        git checkout main
-        git add --all 
-        git commit -m "Updates from the dev environment"
-        git remote set-url origin https://x-access-token:${{ secrets.GITHUBAPPA }}@github.com/${{ github.repository }}
-        git push
 
-    - name: branch-solution, preparar para PullRequest
+    - name: branch-solution
       uses: microsoft/powerplatform-actions/branch-solution@v1
       with:
         branch-name: TEMP_BRANCH_desaA
