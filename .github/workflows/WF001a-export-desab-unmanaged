@@ -1,0 +1,65 @@
+name: WF001a-branch importar unmanaged en desa B
+# Empaquetar managed desde branch DESA
+# importar en AMBIENTE destino DESA B
+on:
+  workflow_dispatch:
+    inputs:
+      # Change this value
+      solution_name:
+        description: 'Nombre de la solución. Sería la full o la mini, TBD'
+        required: true
+        default: DEMOSOL01
+       #Do Not change these values
+      solution_exported_folder:
+        description: 'nombre de la carpeta para almacenar la solución exportada *no cambiar*.'
+        required: true
+        default: out/exported/
+      solution_folder:
+        description: 'Preparación de la carpeta de la solución desempaquetada antes del registro *no modificar*.'
+        required: true
+        default: solution/
+env:
+#edit your values here
+  INTE_ENVIRONMENT_URL: 'https://smartdemodesab.crm.dynamics.com/'
+  CLIENT_ID: 'a939822b-df70-4c40-a6cb-66446c1c798e'
+  TENANT_ID: 'f0474298-6f07-4eb9-b686-421dc9d20959'
+permissions:
+  contents: write
+
+jobs:
+  importar-unmanaged:
+    runs-on: windows-latest
+    env:
+      RUNNER_DEBUG: 1
+      
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        lfs: true
+        
+    - uses: microsoft/powerplatform-actions/actions-install@v1
+
+    - name: who-am-i action
+      uses: microsoft/powerplatform-actions/who-am-i@v1
+      with:
+        environment-url: ${{env.INTE_ENVIRONMENT_URL}}
+        app-id: ${{env.CLIENT_ID}}
+        client-secret: ${{ secrets.GITHUBAPPB }}
+        tenant-id: ${{env.TENANT_ID}}
+
+    - name: Pack solution
+      uses: microsoft/powerplatform-actions/pack-solution@v1
+      with:
+        solution-folder: ${{ github.event.inputs.solution_folder}}/${{ github.event.inputs.solution_name }}
+        solution-file: ${{ github.event.inputs.solution_exported_folder}}/${{ github.event.inputs.solution_name }}.zip
+        solution-type: Unmanaged
+        
+    - name: Importar-solucion-unmanaged
+      uses: microsoft/powerplatform-actions/import-solution@v1
+      with:
+        environment-url: ${{env.INTE_ENVIRONMENT_URL}}
+        app-id: ${{env.CLIENT_ID}}
+        client-secret: ${{ secrets.GITHUBAPPB }}
+        tenant-id: ${{env.TENANT_ID}}
+        solution-file: ${{ github.event.inputs.solution_exported_folder}}/${{ github.event.inputs.solution_name }}.zip
+        publish-changes: false
