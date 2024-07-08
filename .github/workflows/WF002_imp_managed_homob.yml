@@ -10,7 +10,7 @@ on:
       solution_name:
         description: 'Nombre de la solución. Sería la full o la mini, TBD'
         required: true
-        default: SLASOL3
+        default: DEMOSOL01
        #Do Not change these values
       solution_exported_folder:
         description: 'nombre de la carpeta para almacenar la solución exportada *no cambiar*.'
@@ -23,9 +23,9 @@ on:
        
 env:
 #edit your values here
-  HOM_ENVIRONMENT_URL: 'https://homobbg.crm.dynamics.com/'
-  CLIENT_ID: 'a6179c2f-6dab-4113-860b-62423845a814'
-  TENANT_ID: 'ab7e124e-3be3-41ef-a0f4-9b9b8c703eef'
+  HOM_ENVIRONMENT_URL: 'https://smartdemohomob.crm.dynamics.com/'
+  CLIENT_ID: 'a939822b-df70-4c40-a6cb-66446c1c798e'
+  TENANT_ID: 'f0474298-6f07-4eb9-b686-421dc9d20959'
 
 permissions:
   contents: write
@@ -48,7 +48,7 @@ jobs:
       with:
         environment-url: ${{env.HOM_ENVIRONMENT_URL}}
         app-id: ${{env.CLIENT_ID}}
-        client-secret: ${{ secrets.APP_B }}
+        client-secret: ${{ secrets.GITHUBAPPB }}
         tenant-id: ${{env.TENANT_ID}}
 
     - name: Pack solution
@@ -63,7 +63,7 @@ jobs:
       with:
         environment-url: ${{env.HOM_ENVIRONMENT_URL}}
         app-id: ${{env.CLIENT_ID}}
-        client-secret: ${{ secrets.APP_B }}
+        client-secret: ${{ secrets.GITHUBAPPB }}
         tenant-id: ${{env.TENANT_ID}}
         solution-file: ${{ github.event.inputs.solution_exported_folder}}/${{ github.event.inputs.solution_name }}_managed.zip
         publish-changes: false
