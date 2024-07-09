@@ -57,9 +57,9 @@ jobs:
     uses: actions/checkout@v4
       with:
         lfs: true
-    uses: microsoft/powerplatform-actions/actions-install@v1      
-    name: export-solution action -unmanaged
-    uses: microsoft/powerplatform-actions/export-solution@v1
+    - uses: microsoft/powerplatform-actions/actions-install@v1      
+    - name: export-solution action -unmanaged
+      uses: microsoft/powerplatform-actions/export-solution@v1
       with:
         environment-url: ${{inputs.DESAA_ENVIRONMENT_URL}}
         app-id: ${{inputs.CLIENT_ID_A}}
@@ -76,8 +76,8 @@ jobs:
     uses: actions/checkout@v4
       with:
         lfs: true
-    uses: microsoft/powerplatform-actions/actions-install@v1
-    name: export-solution action -managed
+    - uses: microsoft/powerplatform-actions/actions-install@v1
+    - name: export-solution action -managed
       uses: microsoft/powerplatform-actions/export-solution@v1
       with:
         environment-url: ${{inputs.DESAA_ENVIRONMENT_URL}}
@@ -96,10 +96,10 @@ jobs:
      uses: actions/checkout@v4
       with:
         lfs: true
-     uses: microsoft/powerplatform-actions/actions-install@v1
-     name: unpack-solution action
-     uses: microsoft/powerplatform-actions/unpack-solution@v1
-      with:
+     - uses: microsoft/powerplatform-actions/actions-install@v1
+     - name: unpack-solution action
+       uses: microsoft/powerplatform-actions/unpack-solution@v1
+       with:
         solution-file: ${{ inputs.solution_exported_folder}}/${{ inputs.solution_name }}.zip
         solution-folder: ${{ inputs.solution_folder}}/${{ inputs.solution_name }}
         solution-type: 'Both'
@@ -110,12 +110,12 @@ jobs:
     env:
       RUNNER_DEBUG: 1
     steps:
-    uses: actions/checkout@v4
+     uses: actions/checkout@v4
       with:
         lfs: true
-    uses: microsoft/powerplatform-actions/actions-install@v1           
-    name: branch-solution
-    uses: microsoft/powerplatform-actions/branch-solution@v1
+    - uses: microsoft/powerplatform-actions/actions-install@v1           
+    - name: branch-solution
+      uses: microsoft/powerplatform-actions/branch-solution@v1
       with:
         branch-name: TEMP_BRANCH_desaA
         solution-folder: ${{ inputs.solution_folder}}/${{ inputs.solution_name }}
