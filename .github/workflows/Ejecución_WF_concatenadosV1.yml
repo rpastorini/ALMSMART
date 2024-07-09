@@ -29,4 +29,4 @@ jobs:
       TENANT_ID: 'c38716e6-6e98-4055-a98a-7189a099f652'
       
     secrets:
-      envSecret: ${{ secrets.GITHUBAPPA }}
+      envSecret: ${{ secrets.SecretAppA }}
