@@ -70,7 +70,7 @@ jobs:
       with:
         environment-url: ${{env.BUILD_ENVIRONMENT_URL}}
         app-id: ${{env.CLIENT_ID}}
-        client-secret: ${{ secrets.envSecret }}
+        client-secret: ${{env.envSecret}}
         tenant-id: ${{env.TENANT_ID}}  
 
     - name: export-solution action -unmanaged
