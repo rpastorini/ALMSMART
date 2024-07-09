@@ -25,6 +25,7 @@ jobs:
        envSecretA: ${{ secrets.SecretAppA }}
   
   Exportar-sol-branch-INTEA:
+    needs: Exportar-sol-branch-desaa
     uses: ./.github/workflows/WF001a-import-desab-unmanaged.yml
     with:
       #You can specify the solution name here
