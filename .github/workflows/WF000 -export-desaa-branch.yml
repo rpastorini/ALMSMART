@@ -3,7 +3,6 @@ name: export-solution-desde-desaa > branch
 #  unpack it and prepare, commit and push a git branch with the changes
 
 on:
-  #workflow_dispatch:
   workflow_call:
     inputs:
       # Change this value
@@ -50,25 +49,15 @@ permissions:
   contents: write
 
 jobs:
-  
-  export-from-desaA_unmanaged: 
+  unmanaged: 
    runs-on: windows-latest
-   env:
-     RUNNER_DEBUG: 1
+   #env:
+     #RUNNER_DEBUG: 1
    steps:
     - uses: actions/checkout@v4
       with:
         lfs: true
-    - uses: microsoft/powerplatform-actions/actions-install@v1
-
-    #- name: who-am-i action
-    #  uses: microsoft/powerplatform-actions/who-am-i@v1
-    #  with:
-    #    environment-url: ${{inputs.DESAA_ENVIRONMENT_URL}}
-    #    app-id: ${{inputs.CLIENT_ID_A}}
-    #    client-secret: ${{ secrets.envSecretA }}
-    #   tenant-id: ${{inputs.TENANT_ID_A}}  
-      
+    - uses: microsoft/powerplatform-actions/actions-install@v1      
     - name: export-solution action -unmanaged
       uses: microsoft/powerplatform-actions/export-solution@v1
       with:
@@ -79,10 +68,10 @@ jobs:
         solution-name: ${{ inputs.solution_name }}
         solution-output-file: ${{ inputs.solution_exported_folder}}/${{ inputs.solution_name }}.zip
         
-  export-from-desaA_managed:
+  managed:
     runs-on: windows-latest
-    env:
-      RUNNER_DEBUG: 1
+    #env:
+      #RUNNER_DEBUG: 1
     steps:
     - uses: actions/checkout@v4
       with:
@@ -98,15 +87,32 @@ jobs:
         solution-name: ${{ inputs.solution_name }}
         managed: true
         solution-output-file: ${{ inputs.solution_exported_folder}}/${{ inputs.solution_name }}_managed.zip
-
+  
+  unpack:
+    runs-on: windows-latest
+    #env:
+      #RUNNER_DEBUG: 1
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        lfs: true
+    - uses: microsoft/powerplatform-actions/actions-install@v1
     - name: unpack-solution action
-      uses: microsoft/powerplatform-actions/unpack-solution@v1
+    - uses: microsoft/powerplatform-actions/unpack-solution@v1
       with:
         solution-file: ${{ inputs.solution_exported_folder}}/${{ inputs.solution_name }}.zip
         solution-folder: ${{ inputs.solution_folder}}/${{ inputs.solution_name }}
         solution-type: 'Both'
         overwrite-files: true
-               
+  branch:
+    runs-on: windows-latest
+    #env:
+      #RUNNER_DEBUG: 1
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        lfs: true
+    - uses: microsoft/powerplatform-actions/actions-install@v1           
     - name: branch-solution
       uses: microsoft/powerplatform-actions/branch-solution@v1
       with:
