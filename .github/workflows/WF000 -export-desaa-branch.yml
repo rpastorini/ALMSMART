@@ -78,20 +78,20 @@ jobs:
     - name: export-solution action -unmanaged
       uses: microsoft/powerplatform-actions/export-solution@v1
       with:
-        environment-url: ${{env.BUILD_ENVIRONMENT_URL}}
-        app-id: ${{env.CLIENT_ID}}
+        environment-url: ${{imputs.BUILD_ENVIRONMENT_URL}}
+        app-id: ${{inputs.CLIENT_ID}}
         client-secret: ${{ secrets.envSecret }}
-        tenant-id: ${{env.TENANT_ID}}
+        tenant-id: ${{inputs.TENANT_ID}}
         solution-name: ${{ github.event.inputs.solution_name }}
         solution-output-file: ${{ github.event.inputs.solution_exported_folder}}/${{ github.event.inputs.solution_name }}.zip
 
     - name: export-solution action -managed
       uses: microsoft/powerplatform-actions/export-solution@v1
       with:
-        environment-url: ${{env.BUILD_ENVIRONMENT_URL}}
-        app-id: ${{env.CLIENT_ID}}
+        environment-url: ${{inputs.BUILD_ENVIRONMENT_URL}}
+        app-id: ${{inputs.CLIENT_ID}}
         client-secret: ${{ secrets.envSecret }}
-        tenant-id: ${{env.TENANT_ID}}
+        tenant-id: ${{inputs.TENANT_ID}}
         solution-name: ${{ github.event.inputs.solution_name }}
         managed: true
         solution-output-file: ${{ github.event.inputs.solution_exported_folder}}/${{ github.event.inputs.solution_name }}_managed.zip
