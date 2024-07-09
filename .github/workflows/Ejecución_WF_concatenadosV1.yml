@@ -24,7 +24,7 @@ jobs:
     secrets:
        envSecretA: ${{ secrets.SecretAppA }}
   
-  Exportar-sol-branch-INTEA:
+  Exportar-sol-branch-DESAB:
     needs: Exportar-sol-branch-desaa
     uses: ./.github/workflows/WF001a-import-desab-unmanaged.yml
     with:
@@ -36,6 +36,6 @@ jobs:
       solution_target_folder: solution
       DESAB_ENVIRONMENT_URL: https://smartdemodesab.crm.dynamics.com
       CLIENT_ID_B: 'a939822b-df70-4c40-a6cb-66446c1c798e'
-      TENANT_ID_B: 'f0474298-6f07-4eb9-b686-421dc9d2095'  
+      TENANT_ID_B: 'f0474298-6f07-4eb9-b686-421dc9d20959'  
     secrets:
        envSecretB: ${{ secrets.SecretAppB }}
