@@ -100,11 +100,11 @@ jobs:
         solution-type: 'Both'
         overwrite-files: true
 
-    - name: branch-solution
-      uses: microsoft/powerplatform-actions/branch-solution@v1
-      with:
-        branch-name: TEMP_BRANCH_desaA
-        solution-folder: ${{ inputs.solution_folder}}/${{ inputs.solution_name }}
-        solution-target-folder: ${{ inputs.solution_target_folder}}/${{ inputs.solution_name }}
-        repo-token: ${{ secrets.GITHUB_TOKEN }}
-        allow-empty-commit: true
+    #- name: branch-solution
+    #  uses: microsoft/powerplatform-actions/branch-solution@v1
+    #  with:
+    #    branch-name: TEMP_BRANCH_desaA
+    #    solution-folder: ${{ inputs.solution_folder}}/${{ inputs.solution_name }}
+    #    solution-target-folder: ${{ inputs.solution_target_folder}}/${{ inputs.solution_name }}
+    #    repo-token: ${{ secrets.GITHUB_TOKEN }}
+    #    allow-empty-commit: true
