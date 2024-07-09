@@ -49,7 +49,8 @@ permissions:
   contents: write
 
 jobs:
-  unmanaged: 
+  unmanaged:
+   name: unmanaged
    runs-on: windows-latest
    env:
     RUNNER_DEBUG: 1
@@ -69,6 +70,7 @@ jobs:
         solution-output-file: ${{ inputs.solution_exported_folder}}/${{ inputs.solution_name }}.zip    
   
   managed:
+    name: managed
     runs-on: windows-latest
     env:
       RUNNER_DEBUG: 1
@@ -89,6 +91,8 @@ jobs:
         solution-output-file: ${{ inputs.solution_exported_folder}}/${{ inputs.solution_name }}_managed.zip
   
   unpack:
+    name: unpack
+    needs: [unmanaged, managed]
     runs-on: windows-latest
     env:
       RUNNER_DEBUG: 1
@@ -106,6 +110,8 @@ jobs:
         overwrite-files: true
   
   branch:
+    name: branch
+    needs: unpack
     runs-on: windows-latest
     env:
       RUNNER_DEBUG: 1
