@@ -22,7 +22,7 @@ jobs:
       CLIENT_ID_A: 'a4dedf07-6b5f-4f68-bf14-3dc809f12cc7'
       TENANT_ID_A: 'c38716e6-6e98-4055-a98a-7189a099f652' 
     secrets:
-       envSecretB: ${{ secrets.SecretAppB }}
+       envSecretA: ${{ secrets.SecretAppA }}
   
   Exportar-sol-branch-INTEA:
     uses: ./.github/workflows/WF001a-import-desab-unmanaged.yml
