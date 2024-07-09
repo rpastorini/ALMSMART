@@ -52,8 +52,8 @@ jobs:
   unmanaged:
    name: unmanaged
    runs-on: windows-latest
-   env:
-    RUNNER_DEBUG: 1
+   #env:
+    #RUNNER_DEBUG: 1
    steps:
     - uses: actions/checkout@v4
       with:
@@ -72,8 +72,8 @@ jobs:
   managed:
     name: managed
     runs-on: windows-latest
-    env:
-      RUNNER_DEBUG: 1
+    #env:
+      #RUNNER_DEBUG: 1
     steps:
     - uses: actions/checkout@v4
       with:
@@ -94,8 +94,8 @@ jobs:
     name: unpack
     needs: [unmanaged, managed]
     runs-on: windows-latest
-    env:
-      RUNNER_DEBUG: 1
+    #env:
+      #RUNNER_DEBUG: 1
     steps:
      - uses: actions/checkout@v4
        with:
