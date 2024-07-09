@@ -50,6 +50,7 @@ permissions:
 jobs:
   importar-unmanaged:
     runs-on: windows-latest
+    environment: DESA
     env:
       RUNNER_DEBUG: 1
       
