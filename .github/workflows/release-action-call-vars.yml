@@ -34,7 +34,6 @@ permissions:
 jobs:
   Exportar-sol-branch-desaa:
     uses: ./.github/workflows/WF000 -export-desaa-branch.yml
-    secrets: inherit # pass all secrets
     with:
       #You can specify the solution name here
       solution_name: DEMOSOL01
