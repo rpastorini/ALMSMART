@@ -51,8 +51,8 @@ permissions:
 jobs:
   unmanaged: 
    runs-on: windows-latest
-   #env:
-     #RUNNER_DEBUG: 1
+   env:
+    RUNNER_DEBUG: 1
    steps:
     - uses: actions/checkout@v4
       with:
@@ -70,8 +70,8 @@ jobs:
         
   managed:
     runs-on: windows-latest
-    #env:
-      #RUNNER_DEBUG: 1
+    env:
+      RUNNER_DEBUG: 1
     steps:
     - uses: actions/checkout@v4
       with:
@@ -90,8 +90,8 @@ jobs:
   
   unpack:
     runs-on: windows-latest
-    #env:
-      #RUNNER_DEBUG: 1
+    env:
+      RUNNER_DEBUG: 1
     steps:
     - uses: actions/checkout@v4
       with:
@@ -106,8 +106,8 @@ jobs:
         overwrite-files: true
   branch:
     runs-on: windows-latest
-    #env:
-      #RUNNER_DEBUG: 1
+    env:
+      RUNNER_DEBUG: 1
     steps:
     - uses: actions/checkout@v4
       with:
