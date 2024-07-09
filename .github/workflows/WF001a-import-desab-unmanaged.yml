@@ -3,6 +3,7 @@ name: WF001a-branch importar unmanaged en desa B
 # importar en AMBIENTE destino DESA B como unmanaged.
 on:
   workflow_call:
+  pull_request: TEMP_BRANCH_desaA
     inputs:
       # Change this value
       solution_name:
