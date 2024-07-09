@@ -4,7 +4,11 @@ name: Release action
 
 on:
  workflow_dispatch:
-  #release:
+   inputs:
+    environment:
+        description: 'Environment to run tests against'
+        type: environment
+        required: true#release:
   #    types: [created]        
 permissions:
   contents: write
