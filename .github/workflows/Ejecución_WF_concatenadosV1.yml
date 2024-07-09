@@ -14,6 +14,7 @@ jobs:
       #You can specify the solution name here
       solution_name: DEMOSOL01
       #Update your values here
+      solution_exported_folder: /out
       BUILD_ENVIRONMENT_URL: smartdemodesaa.crm.dynamics.com
       PRODUCTION_ENVIRONMENT_URL: <your prod server url>
       CLIENT_ID: a4dedf07-6b5f-4f68-bf14-3dc809f12cc7
