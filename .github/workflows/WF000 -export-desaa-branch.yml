@@ -70,10 +70,10 @@ jobs:
     - name: who-am-i action
       uses: microsoft/powerplatform-actions/who-am-i@v1
       with:
-        environment-url: ${{input.BUILD_ENVIRONMENT_URL}}
-        app-id: ${{input.CLIENT_ID}}
+        environment-url: ${{inputs.BUILD_ENVIRONMENT_URL}}
+        app-id: ${{inputs.CLIENT_ID}}
         client-secret: ${{ secrets.envSecret }}
-        tenant-id: ${{input.TENANT_ID}}  
+        tenant-id: ${{inputs.TENANT_ID}}  
       
     - name: export-solution action -unmanaged
       uses: microsoft/powerplatform-actions/export-solution@v1
