@@ -5,7 +5,52 @@ name: export-solution-desde-desaa > branch
 on:
   #workflow_dispatch:
   workflow_call:
-   
+    inputs:
+      # Change this value
+      solution_name:
+        description: 'name of the solution to worked on from Power Platform'
+        type: string
+        required: true
+        default: DEMOSOL01
+       #Do Not change these values
+      solution_exported_folder:
+        description: 'folder name for staging the exported solution *do not change*'
+        type: string
+        required: true
+        default: /out
+      solution_folder:
+        description: 'staging the unpacked solution folder before check-in *do not change*'
+        type: string
+        required: true
+        default: /solution
+      solution_target_folder: 
+       description: 'folder name to be created and checked in *do not change*'
+       type: string
+       required: true
+       default: solution
+      BUILD_ENVIRONMENT_URL:
+        description: 'Build environment url.'
+        type: string
+        required: true   
+      PRODUCTION_ENVIRONMENT_URL: 
+        description: 'Production environment url.'
+        type: string
+        required: true
+      CLIENT_ID: 
+        description: 'The client id'
+        type: string
+        required: true
+      TENANT_ID: 
+        description: 'The tenant id'
+        type: string
+        required: true
+    secrets:
+      envSecret:
+        description: 'The secret value for authentication using SPN'
+        required: true
+permissions:
+  contents: write
+
 jobs:
   export-from-desaA:
     runs-on: windows-latest
@@ -31,7 +76,7 @@ jobs:
     - name: export-solution action -unmanaged
       uses: microsoft/powerplatform-actions/export-solution@v1
       with:
-        environment-url: ${{env.ENVIRONMENT_URL}}
+        environment-url: ${{env.BUILD_ENVIRONMENT_URL}}
         app-id: ${{env.CLIENT_ID}}
         client-secret: ${{ secrets.GITHUBAPPA }}
         tenant-id: ${{env.TENANT_ID}}
