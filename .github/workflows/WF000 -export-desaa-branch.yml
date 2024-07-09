@@ -28,19 +28,15 @@ on:
        type: string
        required: true
        default: solution   
-      BUILD_ENVIRONMENT_URL:
-        description: 'Build environment url.'
+      DESAA_ENVIRONMENT_URL:
+        description: 'DESAA environment url.'
         type: string
         required: true   
-      PRODUCTION_ENVIRONMENT_URL: 
-        description: 'Production environment url'
-        type: string
-        required: true
-      CLIENT_ID: 
+      CLIENT_ID_A: 
         description: 'The client id'
         type: string
         required: true
-      TENANT_ID: 
+      TENANT_ID_A: 
         description: 'The tenant id'
         type: string
         required: true
@@ -70,28 +66,28 @@ jobs:
     - name: who-am-i action
       uses: microsoft/powerplatform-actions/who-am-i@v1
       with:
-        environment-url: ${{inputs.BUILD_ENVIRONMENT_URL}}
-        app-id: ${{inputs.CLIENT_ID}}
+        environment-url: ${{inputs.DESAA_ENVIRONMENT_URL}}
+        app-id: ${{inputs.CLIENT_ID_A}}
         client-secret: ${{ secrets.envSecret }}
-        tenant-id: ${{inputs.TENANT_ID}}  
+        tenant-id: ${{inputs.TENANT_ID_A}}  
       
     - name: export-solution action -unmanaged
       uses: microsoft/powerplatform-actions/export-solution@v1
       with:
-        environment-url: ${{inputs.BUILD_ENVIRONMENT_URL}}
-        app-id: ${{inputs.CLIENT_ID}}
-        client-secret: ${{ secrets.envSecret }}
-        tenant-id: ${{inputs.TENANT_ID}}
+        environment-url: ${{inputs.DESAA_ENVIRONMENT_URL}}
+        app-id: ${{inputs.CLIENT_ID_A}}
+        client-secret: ${{ secrets.envSecretA }}
+        tenant-id: ${{inputs.TENANT_ID_A}}
         solution-name: ${{ inputs.solution_name }}
         solution-output-file: ${{ inputs.solution_exported_folder}}/${{ inputs.solution_name }}.zip
 
     - name: export-solution action -managed
       uses: microsoft/powerplatform-actions/export-solution@v1
       with:
-        environment-url: ${{inputs.BUILD_ENVIRONMENT_URL}}
-        app-id: ${{inputs.CLIENT_ID}}
-        client-secret: ${{ secrets.envSecret }}
-        tenant-id: ${{inputs.TENANT_ID}}
+        environment-url: ${{inputs.DESAA_ENVIRONMENT_URL}}
+        app-id: ${{inputs.CLIENT_ID_A}}
+        client-secret: ${{ secrets.envSecretA }}
+        tenant-id: ${{inputs.TENANT_ID_A}}
         solution-name: ${{ inputs.solution_name }}
         managed: true
         solution-output-file: ${{ inputs.solution_exported_folder}}/${{ inputs.solution_name }}_managed.zip
