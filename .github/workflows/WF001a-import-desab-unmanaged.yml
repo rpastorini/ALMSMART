@@ -26,33 +26,21 @@ on:
        type: string
        required: true
        default: solution   
-      BUILD_ENVIRONMENT_URL:
-        description: 'Build environment url.'
+      DESAB_ENVIRONMENT_URL:
+        description: 'DeaB environment url.'
         type: string
         required: true   
-      PRODUCTION_ENVIRONMENT_URL: 
-        description: 'Production environment url'
-        type: string
-        required: true
-      INTE_ENVIRONMENT_URL:
-        description: 'Integración environment url'
-        type: string
-        required: true
-      HOMOLOGACION_ENVIRONMENT_URL: 
-        description: 'Homologacion environment url'
-        type: string
-        required: true
-      CLIENT_ID: 
+      CLIENT_ID_B: 
         description: 'The client id'
         type: string
         required: true
-      TENANT_ID: 
+      TENANT_ID_B: 
         description: 'The tenant id'
         type: string
         required: true
  
     secrets:
-      envSecret:
+      envSecretB:
         description: 'The secret value for authentication using SPN'
         required: true
 
@@ -75,10 +63,10 @@ jobs:
     - name: who-am-i action
       uses: microsoft/powerplatform-actions/who-am-i@v1
       with:
-        environment-url: ${{inputs.INTE_ENVIRONMENT_URL}}
-        app-id: ${{inputs.CLIENT_ID}}
-        client-secret: ${{ secrets.envSecret }}
-        tenant-id: ${{inputs.TENANT_ID}}
+        environment-url: ${{inputs.DESAB_ENVIRONMENT_URL}}
+        app-id: ${{inputs.CLIENT_ID_B}}
+        client-secret: ${{ secrets.envSecretB }}
+        tenant-id: ${{inputs.TENANT_ID_B}}
 
     - name: Pack solution
       uses: microsoft/powerplatform-actions/pack-solution@v1
@@ -90,9 +78,9 @@ jobs:
     - name: Importar-solucion-unmanaged
       uses: microsoft/powerplatform-actions/import-solution@v1
       with:
-        environment-url: ${{inputs.INTE_ENVIRONMENT_URL}}
-        app-id: ${{inputs.CLIENT_ID}}
-        client-secret: ${{ secrets.envSecret }}
-        tenant-id: ${{inputs.TENANT_ID}}
+        environment-url: ${{inputs.DESAB_ENVIRONMENT_URL}}
+        app-id: ${{inputs.CLIENT_ID_B}}
+        client-secret: ${{ secrets.envSecretB }}
+        tenant-id: ${{inputs.TENANT_ID_B}}
         solution-file: ${{ inputs.solution_exported_folder}}/${{ inputs.solution_name }}.zip
         publish-changes: false
