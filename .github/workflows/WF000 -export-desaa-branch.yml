@@ -70,8 +70,8 @@ jobs:
       with:
         environment-url: ${{env.BUILD_ENVIRONMENT_URL}}
         app-id: ${{env.CLIENT_ID}}
-        client-secret: ${{ secrets.envSecret }}
         tenant-id: ${{env.TENANT_ID}}  
+        client-secret: ${{ secrets.envSecret }}
 
     - name: export-solution action -unmanaged
       uses: microsoft/powerplatform-actions/export-solution@v1
