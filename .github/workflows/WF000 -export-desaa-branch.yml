@@ -42,7 +42,7 @@ on:
         required: true
  
     secrets:
-      envSecret:
+      envSecretA:
         description: 'The secret value for authentication using SPN'
         required: true
 
@@ -68,7 +68,7 @@ jobs:
       with:
         environment-url: ${{inputs.DESAA_ENVIRONMENT_URL}}
         app-id: ${{inputs.CLIENT_ID_A}}
-        client-secret: ${{ secrets.envSecret }}
+        client-secret: ${{ secrets.envSecretA }}
         tenant-id: ${{inputs.TENANT_ID_A}}  
       
     - name: export-solution action -unmanaged
