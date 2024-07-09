@@ -59,7 +59,7 @@ jobs:
         lfs: true
     - uses: microsoft/powerplatform-actions/actions-install@v1      
     - name: export-solution action -unmanaged
-      uses: microsoft/powerplatform-actions/export-solution@v1
+    - uses: microsoft/powerplatform-actions/export-solution@v1
       with:
         environment-url: ${{inputs.DESAA_ENVIRONMENT_URL}}
         app-id: ${{inputs.CLIENT_ID_A}}
@@ -78,7 +78,7 @@ jobs:
         lfs: true
     - uses: microsoft/powerplatform-actions/actions-install@v1
     - name: export-solution action -managed
-      uses: microsoft/powerplatform-actions/export-solution@v1
+    - uses: microsoft/powerplatform-actions/export-solution@v1
       with:
         environment-url: ${{inputs.DESAA_ENVIRONMENT_URL}}
         app-id: ${{inputs.CLIENT_ID_A}}
@@ -114,7 +114,7 @@ jobs:
         lfs: true
     - uses: microsoft/powerplatform-actions/actions-install@v1           
     - name: branch-solution
-      uses: microsoft/powerplatform-actions/branch-solution@v1
+    - uses: microsoft/powerplatform-actions/branch-solution@v1
       with:
         branch-name: TEMP_BRANCH_desaA
         solution-folder: ${{ inputs.solution_folder}}/${{ inputs.solution_name }}
