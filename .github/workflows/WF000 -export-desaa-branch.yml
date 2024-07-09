@@ -54,7 +54,7 @@ jobs:
    env:
     RUNNER_DEBUG: 1
    steps:
-    uses: actions/checkout@v4
+    - uses: actions/checkout@v4
       with:
         lfs: true
     - uses: microsoft/powerplatform-actions/actions-install@v1      
@@ -73,7 +73,7 @@ jobs:
     env:
       RUNNER_DEBUG: 1
     steps:
-    uses: actions/checkout@v4
+    - uses: actions/checkout@v4
       with:
         lfs: true
     - uses: microsoft/powerplatform-actions/actions-install@v1
@@ -93,8 +93,8 @@ jobs:
     env:
       RUNNER_DEBUG: 1
     steps:
-     uses: actions/checkout@v4
-      with:
+     - uses: actions/checkout@v4
+       with:
         lfs: true
      - uses: microsoft/powerplatform-actions/actions-install@v1
      - name: unpack-solution action
@@ -110,13 +110,13 @@ jobs:
     env:
       RUNNER_DEBUG: 1
     steps:
-     uses: actions/checkout@v4
-      with:
+     - uses: actions/checkout@v4
+       with:
         lfs: true
-    - uses: microsoft/powerplatform-actions/actions-install@v1           
-    - name: branch-solution
-      uses: microsoft/powerplatform-actions/branch-solution@v1
-      with:
+     - uses: microsoft/powerplatform-actions/actions-install@v1           
+     - name: branch-solution
+       uses: microsoft/powerplatform-actions/branch-solution@v1
+       with:
         branch-name: TEMP_BRANCH_desaA
         solution-folder: ${{ inputs.solution_folder}}/${{ inputs.solution_name }}
         solution-target-folder: ${{ inputs.solution_target_folder}}/${{ inputs.solution_name }}
