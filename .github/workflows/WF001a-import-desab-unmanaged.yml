@@ -34,6 +34,14 @@ on:
         description: 'Production environment url'
         type: string
         required: true
+      INTE_ENVIRONMENT_URL:
+        description: 'Integración environment url'
+        type: string
+        required: true
+      HOMOLOGACION_ENVIRONMENT_URL: 
+        description: 'Homologacion environment url'
+        type: string
+        required: true
       CLIENT_ID: 
         description: 'The client id'
         type: string
