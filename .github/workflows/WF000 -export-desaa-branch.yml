@@ -33,7 +33,7 @@ on:
         type: string
         required: true   
       PRODUCTION_ENVIRONMENT_URL: 
-        description: 'Production environment url.'
+        description: 'Production environment url'
         type: string
         required: true
       CLIENT_ID: 
@@ -63,10 +63,10 @@ jobs:
       with:
         lfs: true
 
-    - uses: microsoft/powerplatform-actions/actions-install@v1
+    - uses: microsoft/powerplatform-actions/actions-install@v1.5.2
 
     - name: who-am-i action
-      uses: microsoft/powerplatform-actions/who-am-i@v1
+      uses: microsoft/powerplatform-actions/who-am-i@v1.5.2
       with:
         environment-url: ${{env.BUILD_ENVIRONMENT_URL}}
         app-id: ${{env.CLIENT_ID}}
@@ -74,7 +74,7 @@ jobs:
         tenant-id: ${{env.TENANT_ID}}  
 
     - name: export-solution action -unmanaged
-      uses: microsoft/powerplatform-actions/export-solution@v1
+      uses: microsoft/powerplatform-actions/export-solution@v1.5.2
       with:
         environment-url: ${{env.BUILD_ENVIRONMENT_URL}}
         app-id: ${{env.CLIENT_ID}}
@@ -84,9 +84,9 @@ jobs:
         solution-output-file: ${{ github.event.inputs.solution_exported_folder}}/${{ github.event.inputs.solution_name }}.zip
 
     - name: export-solution action -managed
-      uses: microsoft/powerplatform-actions/export-solution@v1
+      uses: microsoft/powerplatform-actions/export-solution@v1.5.2
       with:
-        environment-url: ${{env.ENVIRONMENT_URL}}
+        environment-url: ${{env.BUILD_ENVIRONMENT_URL}}
         app-id: ${{env.CLIENT_ID}}
         client-secret: ${{ secrets.envSecret }}
         tenant-id: ${{env.TENANT_ID}}
@@ -95,7 +95,7 @@ jobs:
         solution-output-file: ${{ github.event.inputs.solution_exported_folder}}/${{ github.event.inputs.solution_name }}_managed.zip
 
     - name: unpack-solution action
-      uses: microsoft/powerplatform-actions/unpack-solution@v1
+      uses: microsoft/powerplatform-actions/unpack-solution@v1.5.2
       with:
         solution-file: ${{ github.event.inputs.solution_exported_folder}}/${{ github.event.inputs.solution_name }}.zip
         solution-folder: ${{ github.event.inputs.solution_folder}}/${{ github.event.inputs.solution_name }}
@@ -103,7 +103,7 @@ jobs:
         overwrite-files: true
 
     - name: branch-solution
-      uses: microsoft/powerplatform-actions/branch-solution@v1
+      uses: microsoft/powerplatform-actions/branch-solution@v1.5.2
       with:
         branch-name: TEMP_BRANCH_desaA
         solution-folder: ${{ github.event.inputs.solution_folder}}/${{ github.event.inputs.solution_name }}
