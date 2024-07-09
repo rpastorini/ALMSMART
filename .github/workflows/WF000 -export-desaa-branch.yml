@@ -68,9 +68,9 @@ jobs:
     - name: who-am-i action
       uses: microsoft/powerplatform-actions/who-am-i@v1
       with:
-        environment-url: ${{env.ENVIRONMENT_URL}}
+        environment-url: ${{env.BUILD_ENVIRONMENT_URL}}
         app-id: ${{env.CLIENT_ID}}
-        client-secret: ${{ secrets.GITHUBAPPA }}
+        client-secret: ${{ secrets.envSecret }}
         tenant-id: ${{env.TENANT_ID}}  
 
     - name: export-solution action -unmanaged
@@ -78,7 +78,7 @@ jobs:
       with:
         environment-url: ${{env.BUILD_ENVIRONMENT_URL}}
         app-id: ${{env.CLIENT_ID}}
-        client-secret: ${{ secrets.GITHUBAPPA }}
+        client-secret: ${{ secrets.envSecret }}
         tenant-id: ${{env.TENANT_ID}}
         solution-name: ${{ github.event.inputs.solution_name }}
         solution-output-file: ${{ github.event.inputs.solution_exported_folder}}/${{ github.event.inputs.solution_name }}.zip
@@ -88,7 +88,7 @@ jobs:
       with:
         environment-url: ${{env.ENVIRONMENT_URL}}
         app-id: ${{env.CLIENT_ID}}
-        client-secret: ${{ secrets.GITHUBAPPA }}
+        client-secret: ${{ secrets.envSecret }}
         tenant-id: ${{env.TENANT_ID}}
         solution-name: ${{ github.event.inputs.solution_name }}
         managed: true
