@@ -78,7 +78,7 @@ jobs:
     - name: export-solution action -unmanaged
       uses: microsoft/powerplatform-actions/export-solution@v1
       with:
-        environment-url: ${{imputs.BUILD_ENVIRONMENT_URL}}
+        environment-url: ${{inputs.BUILD_ENVIRONMENT_URL}}
         app-id: ${{inputs.CLIENT_ID}}
         client-secret: ${{ secrets.envSecret }}
         tenant-id: ${{inputs.TENANT_ID}}
