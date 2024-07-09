@@ -99,8 +99,8 @@ jobs:
     - name: unpack-solution action
       uses: microsoft/powerplatform-actions/unpack-solution@v1
       with:
-        solution-file: ${{ github.event.inputs.solution_exported_folder}}/${{ github.event.inputs.solution_name }}.zip
-        solution-folder: ${{ github.event.inputs.solution_folder}}/${{ github.event.inputs.solution_name }}
+        solution-file: ${{ inputs.solution_exported_folder}}/${{ inputs.solution_name }}.zip
+        solution-folder: ${{ inputs.solution_folder}}/${{ inputs.solution_name }}
         solution-type: 'Both'
         overwrite-files: true
 
@@ -108,7 +108,7 @@ jobs:
       uses: microsoft/powerplatform-actions/branch-solution@v1
       with:
         branch-name: TEMP_BRANCH_desaA
-        solution-folder: ${{ github.event.inputs.solution_folder}}/${{ github.event.inputs.solution_name }}
-        solution-target-folder: ${{ github.event.inputs.solution_target_folder}}/${{ github.event.inputs.solution_name }}
+        solution-folder: ${{ inputs.solution_folder}}/${{ inputs.solution_name }}
+        solution-target-folder: ${{ inputs.solution_target_folder}}/${{ inputs.solution_name }}
         repo-token: ${{ secrets.GITHUB_TOKEN }}
         allow-empty-commit: true
