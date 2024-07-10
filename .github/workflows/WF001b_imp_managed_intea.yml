@@ -82,6 +82,6 @@ jobs:
         environment-url: ${{inputs.INTEA_ENVIRONMENT_URL}}
         app-id: ${{inputs.CLIENT_ID_A}}
         client-secret: ${{ secrets.envSecretA }}
-        tenant-id: ${{env.TENANT_ID_A}}
+        tenant-id: ${{inputs.TENANT_ID_A}}
         solution-file: ${{ inputs.solution_exported_folder}}/${{ inputs.solution_name }}_managed.zip
         publish-changes: false
