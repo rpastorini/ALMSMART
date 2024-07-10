@@ -72,8 +72,8 @@ jobs:
     - name: Pack solution
       uses: microsoft/powerplatform-actions/pack-solution@v1
       with:
-        solution-folder: ${{ inputs.solution_folder}}/${{ inputs.solution_name }}
-        solution-file: ${{ inputs.solution_exported_folder}}/${{ inputs.solution_name }}.zip
+        solution-folder: ${{ github.event.inputs.solution_folder}}/${{ github.event.inputs.solution_name }}
+        solution-file: ${{ github.event.inputs.solution_exported_folder}}/${{ github.event.inputs.solution_name }}.zip
         solution-type: Unmanaged
         
     - name: Importar-solucion-unmanaged
@@ -83,5 +83,5 @@ jobs:
         app-id: ${{inputs.CLIENT_ID_B}}
         client-secret: ${{ secrets.envSecretB }}
         tenant-id: ${{inputs.TENANT_ID_B}}
-        solution-file: ${{ inputs.solution_exported_folder}}/${{ inputs.solution_name }}.zip
+        solution-file: ${{ github.event.inputs.solution_exported_folder}}/${{ github.event.inputs.solution_name }}.zip
         publish-changes: false
