@@ -92,6 +92,7 @@ jobs:
     - uses: actions/checkout@v4
       with:
        lfs: true
+    - uses: microsoft/powerplatform-actions/actions-install@v1
     - name: unpack-solution action
       uses: microsoft/powerplatform-actions/unpack-solution@v1
       with:
@@ -108,7 +109,8 @@ jobs:
    steps:
     - uses: actions/checkout@v4
       with:
-       lfs: true     
+       lfs: true
+    - uses: microsoft/powerplatform-actions/actions-install@v1
     - name: branch-solution
       uses: microsoft/powerplatform-actions/branch-solution@v1
       with:
