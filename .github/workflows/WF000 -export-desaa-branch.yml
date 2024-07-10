@@ -81,7 +81,17 @@ jobs:
         solution-name: ${{ inputs.solution_name }}
         managed: true
         solution-output-file: ${{ inputs.solution_exported_folder}}/${{ inputs.solution_name }}_managed.zip
- 
+  
+  unpack_solution:
+   name: unpack_solution
+   needs: managed-unmanaged
+   runs-on: windows-latest
+   env:
+    RUNNER_DEBUG: 1
+   steps:
+    - uses: actions/checkout@v4
+      with:
+       lfs: true
     - name: unpack-solution action
       uses: microsoft/powerplatform-actions/unpack-solution@v1
       with:
@@ -89,7 +99,16 @@ jobs:
         solution-folder: ${{ inputs.solution_folder}}/${{ inputs.solution_name }}
         solution-type: 'Both'
         overwrite-files: true
-        
+  Create_branch:
+   name: create_branch
+   needs: unpack_solution
+   runs-on: windows-latest
+   env:
+    RUNNER_DEBUG: 1
+   steps:
+    - uses: actions/checkout@v4
+      with:
+       lfs: true     
     - name: branch-solution
       uses: microsoft/powerplatform-actions/branch-solution@v1
       with:
