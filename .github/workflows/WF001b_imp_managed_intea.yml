@@ -2,23 +2,8 @@ name: WF001b-importar desde branch Desa A a INTE A
 # Empaquetar managed desde branch desa A
 # importar en INTE A como Mnaaged.
 on:
-  workflow_dispatch:
-    inputs:
-      # Change this value
-      solution_name:
-        description: 'Nombre de la solución. Sería la full o la mini, TBD'
-        required: true
-        default: DEMOSOL01
-       #Do Not change these values
-      solution_exported_folder:
-        description: 'nombre de la carpeta para almacenar la solución exportada *no cambiar*.'
-        required: true
-        default: out/exported/
-      solution_folder:
-        description: 'Preparación de la carpeta de la solución desempaquetada antes del registro *no modificar*.'
-        required: true
-        default: solution/
-      
+  workflow_call:
+    inputs: 
       # Change this value
       solution_name:
         description: 'name of the solution to worked on from Power Platform'
@@ -30,7 +15,7 @@ on:
         description: 'folder name for staging the exported solution *do not change*'
         type: string
         required: true
-        default: /out
+        default: /out/exported
       solution_folder:
         description: 'staging the unpacked solution folder before check-in *do not change*'
         type: string
@@ -41,21 +26,21 @@ on:
        type: string
        required: true
        default: solution   
-      DESAB_ENVIRONMENT_URL:
-        description: 'DesaB environment url.'
+      INTEA_ENVIRONMENT_URL:
+        description: 'INTEA environment url.'
         type: string
         required: true   
-      CLIENT_ID_B: 
+      CLIENT_ID_A: 
         description: 'The client id'
         type: string
         required: true
-      TENANT_ID_B: 
+      TENANT_ID_A: 
         description: 'The tenant id'
         type: string
         required: true
  
     secrets:
-      envSecretB:
+      envSecretA:
         description: 'The secret value for authentication using SPN'
         required: true
 
@@ -78,24 +63,24 @@ jobs:
     - name: who-am-i action
       uses: microsoft/powerplatform-actions/who-am-i@v1
       with:
-        environment-url: ${{env.INTE_ENVIRONMENT_URL}}
-        app-id: ${{env.CLIENT_ID}}
-        client-secret: ${{ secrets.GITHUBAPPA }}
-        tenant-id: ${{env.TENANT_ID}}
+        environment-url: ${{imputs.INTEA_ENVIRONMENT_URL}}
+        app-id: ${{inputs.CLIENT_ID_A}}
+        client-secret: ${{ secrets.envSecretA }}
+        tenant-id: ${{inputs.TENANT_ID_A}}
 
     - name: Pack solution
       uses: microsoft/powerplatform-actions/pack-solution@v1
       with:
-        solution-folder: ${{ github.event.inputs.solution_folder}}/${{ github.event.inputs.solution_name }}
-        solution-file: ${{ github.event.inputs.solution_exported_folder}}/${{ github.event.inputs.solution_name }}_managed.zip
+        solution-folder: ${{ inputs.solution_folder}}/${{ inputs.solution_name }}
+        solution-file: ${{ inputs.solution_exported_folder}}/${{ inputs.solution_name }}_managed.zip
         solution-type: Managed
         
     - name: Importar-solucion-administrada
       uses: microsoft/powerplatform-actions/import-solution@v1
       with:
-        environment-url: ${{env.INTE_ENVIRONMENT_URL}}
-        app-id: ${{env.CLIENT_ID}}
-        client-secret: ${{ secrets.GITHUBAPPA }}
-        tenant-id: ${{env.TENANT_ID}}
-        solution-file: ${{ github.event.inputs.solution_exported_folder}}/${{ github.event.inputs.solution_name }}_managed.zip
+        environment-url: ${{inputs.INTEA_ENVIRONMENT_URL}}
+        app-id: ${{inputs.CLIENT_ID_A}}
+        client-secret: ${{ secrets.envSecretA }}
+        tenant-id: ${{env.TENANT_ID_A}}
+        solution-file: ${{ inputs.solution_exported_folder}}/${{ inputs.solution_name }}_managed.zip
         publish-changes: false
