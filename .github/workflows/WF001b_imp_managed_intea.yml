@@ -72,7 +72,7 @@ jobs:
     - name: Pack solution
       uses: microsoft/powerplatform-actions/pack-solution@v1
       with:
-        solution-folder: ${{ inputs.solution_folder}}/${{ inputs.solution_name }}
+        solution-folder: ${{ inputs.solution_target_folder}}/${{ inputs.solution_name }}
         solution-file: ${{ inputs.solution_exported_folder}}/${{ inputs.solution_name }}_managed.zip
         solution-type: Managed
         
