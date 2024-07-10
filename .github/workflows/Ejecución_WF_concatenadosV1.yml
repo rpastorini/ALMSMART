@@ -32,7 +32,7 @@ jobs:
       solution_name: DEMOSOL01
       #Update your values here
       solution_exported_folder: /out
-      solution_folder: /solution
+      solution_folder: /solution/DEMOSOL01
       solution_target_folder: solution
       DESAB_ENVIRONMENT_URL: https://smartdemodesab.crm.dynamics.com
       CLIENT_ID_B: 'a939822b-df70-4c40-a6cb-66446c1c798e'
