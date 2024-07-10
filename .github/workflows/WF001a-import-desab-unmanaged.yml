@@ -27,7 +27,7 @@ on:
        required: true
        default: solution   
       DESAB_ENVIRONMENT_URL:
-        description: 'DeaB environment url.'
+        description: 'DesaB environment url.'
         type: string
         required: true   
       CLIENT_ID_B: 
@@ -61,13 +61,13 @@ jobs:
         
     - uses: microsoft/powerplatform-actions/actions-install@v1
 
-    - name: who-am-i action
-      uses: microsoft/powerplatform-actions/who-am-i@v1
-      with:
-        environment-url: ${{inputs.DESAB_ENVIRONMENT_URL}}
-        app-id: ${{inputs.CLIENT_ID_B}}
-        client-secret: ${{ secrets.envSecretB }}
-        tenant-id: ${{inputs.TENANT_ID_B}}
+    #- name: who-am-i action
+    #  uses: microsoft/powerplatform-actions/who-am-i@v1
+    #  with:
+    #    environment-url: ${{inputs.DESAB_ENVIRONMENT_URL}}
+    #    app-id: ${{inputs.CLIENT_ID_B}}
+    #    client-secret: ${{ secrets.envSecretB }}
+    #    tenant-id: ${{inputs.TENANT_ID_B}}
 
     - name: Pack solution
       uses: microsoft/powerplatform-actions/pack-solution@v1
