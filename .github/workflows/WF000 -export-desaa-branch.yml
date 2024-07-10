@@ -52,8 +52,8 @@ jobs:
   managed-unmanaged:
    name: managed-unmanaged
    runs-on: windows-latest
-   #env:
-    #RUNNER_DEBUG: 1
+   env:
+    RUNNER_DEBUG: 1
    steps:
     - uses: actions/checkout@v4
       with:
