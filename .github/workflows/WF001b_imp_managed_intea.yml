@@ -50,6 +50,7 @@ permissions:
 jobs:
   importar-managed:
     runs-on: windows-latest
+    environment: INTE
     env:
       RUNNER_DEBUG: 1
       
@@ -60,13 +61,13 @@ jobs:
         
     - uses: microsoft/powerplatform-actions/actions-install@v1
 
-    - name: who-am-i action
-      uses: microsoft/powerplatform-actions/who-am-i@v1
-      with:
-        environment-url: ${{imputs.INTEA_ENVIRONMENT_URL}}
-        app-id: ${{inputs.CLIENT_ID_A}}
-        client-secret: ${{ secrets.envSecretA }}
-        tenant-id: ${{inputs.TENANT_ID_A}}
+    #- name: who-am-i action
+    #  uses: microsoft/powerplatform-actions/who-am-i@v1
+    #  with:
+    #    environment-url: ${{imputs.INTEA_ENVIRONMENT_URL}}
+    #    app-id: ${{inputs.CLIENT_ID_A}}
+    #    client-secret: ${{ secrets.envSecretA }}
+    #    tenant-id: ${{inputs.TENANT_ID_A}}
 
     - name: Pack solution
       uses: microsoft/powerplatform-actions/pack-solution@v1
