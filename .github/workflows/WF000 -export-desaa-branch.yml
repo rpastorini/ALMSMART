@@ -59,8 +59,7 @@ jobs:
       with:
        lfs: true
        
-    - name: powerplatform-actions
-      uses: microsoft/powerplatform-actions@v1
+    - uses: microsoft/powerplatform-actions@v1
                 
     - name: export-solution action -unmanaged
       uses: microsoft/powerplatform-actions/export-solution@v1
