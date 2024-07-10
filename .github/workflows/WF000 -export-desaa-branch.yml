@@ -16,7 +16,7 @@ on:
         description: 'folder name for staging the exported solution *do not change*'
         type: string
         required: true
-        default: /out
+        default: /out/exported
       solution_folder:
         description: 'staging the unpacked solution folder before check-in *do not change*'
         type: string
@@ -49,11 +49,13 @@ permissions:
   contents: write
 
 jobs:
-  managed-unmanaged:
-   name: managed-unmanaged
+  
+  export_desaA:
+   name: export_desaA
    runs-on: windows-latest
    env:
     RUNNER_DEBUG: 1
+   
    steps:
     - uses: actions/checkout@v4
       with:
@@ -82,17 +84,6 @@ jobs:
         managed: true
         solution-output-file: ${{ inputs.solution_exported_folder}}/${{ inputs.solution_name }}_managed.zip
   
-  unpack_solution:
-   name: unpack_solution
-   needs: managed-unmanaged
-   runs-on: windows-latest
-   env:
-    RUNNER_DEBUG: 1
-   steps:
-    - uses: actions/checkout@v4
-      with:
-       lfs: true
-    - uses: microsoft/powerplatform-actions/actions-install@v1
     - name: unpack-solution action
       uses: microsoft/powerplatform-actions/unpack-solution@v1
       with:
@@ -100,17 +91,7 @@ jobs:
         solution-folder: ${{ inputs.solution_folder}}/${{ inputs.solution_name }}
         solution-type: 'Both'
         overwrite-files: true
-  Create_branch:
-   name: create_branch
-   needs: unpack_solution
-   runs-on: windows-latest
-   env:
-    RUNNER_DEBUG: 1
-   steps:
-    - uses: actions/checkout@v4
-      with:
-       lfs: true
-    - uses: microsoft/powerplatform-actions/actions-install@v1
+        
     - name: branch-solution
       uses: microsoft/powerplatform-actions/branch-solution@v1
       with:
