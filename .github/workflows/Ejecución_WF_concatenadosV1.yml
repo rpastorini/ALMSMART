@@ -15,7 +15,7 @@ jobs:
       #You can specify the solution name here
       solution_name: DEMOSOL01
       #Update your values here
-      solution_exported_folder: /out
+      solution_exported_folder: /out/exported
       solution_folder: /solution
       solution_target_folder: solution
       DESAA_ENVIRONMENT_URL: https://smartdemodesaa.crm.dynamics.com
@@ -31,7 +31,7 @@ jobs:
       #You can specify the solution name here
       solution_name: DEMOSOL01
       #Update your values here
-      solution_exported_folder: /out
+      solution_exported_folder: /out/exported
       solution_folder: /solution
       solution_target_folder: solution
       DESAB_ENVIRONMENT_URL: https://smartdemodesab.crm.dynamics.com
