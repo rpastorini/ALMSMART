@@ -84,4 +84,4 @@ jobs:
         client-secret: ${{ secrets.envSecretB }}
         tenant-id: ${{inputs.TENANT_ID_B}}
         solution-file: ${{ inputs.solution_exported_folder}}/${{ inputs.solution_name }}.zip
-        publish-changes: true
+        publish-changes: false
