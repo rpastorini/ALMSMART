@@ -53,6 +53,7 @@ jobs:
   export_desaA:
    name: export_desaA
    runs-on: windows-latest
+   environments: Depliegue DesaA
    env:
     RUNNER_DEBUG: 1
    
