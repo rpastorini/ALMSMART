@@ -5,8 +5,11 @@ name: Ejecucion concatenado
 on:
  workflow_dispatch:
   inputs:
-   VERSION:
-
+    VERSION:
+     description: 'Version online nueva'
+     required: true
+     default: 1.0.0.10
+    
 permissions:
   contents: write
   
