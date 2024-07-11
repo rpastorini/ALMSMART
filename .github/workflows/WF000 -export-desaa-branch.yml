@@ -39,6 +39,10 @@ on:
         description: 'The tenant id'
         type: string
         required: true
+      VERSION:
+        description: 'Version Online nueva'
+        type: string
+        required: true
  
     secrets:
       envSecretA:
@@ -93,7 +97,7 @@ jobs:
         client-secret: ${{ secrets.envSecretA }}
         tenant-id: ${{inputs.TENANT_ID_A}}
         name: ${{ inputs.solution_name }}
-        version: 1.0.0.9
+        version: ${{ inputs.VERSION }}
         
     - name: unpack-solution action
       uses: microsoft/powerplatform-actions/unpack-solution@v1
