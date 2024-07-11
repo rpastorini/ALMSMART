@@ -4,6 +4,8 @@ name: Ejecucion concatenado
 
 on:
  workflow_dispatch:
+  inputs:
+   VERSION:
 
 permissions:
   contents: write
