@@ -83,7 +83,17 @@ jobs:
         solution-name: ${{ inputs.solution_name }}
         managed: true
         solution-output-file: ${{ inputs.solution_exported_folder}}/${{ inputs.solution_name }}_managed.zip
-  
+   
+    - name: set-online-solution-version action
+      uses: microsoft/powerplatform-actions/set-online-solution-version@v1
+      with:
+        environment-url: ${{inputs.DESAA_ENVIRONMENT_URL}}
+        app-id: ${{inputs.CLIENT_ID_A}}
+        client-secret: ${{ secrets.envSecretA }}
+        tenant-id: ${{inputs.TENANT_ID_A}}
+        name: ${{ inputs.solution_name }}
+        version: 1.0.0.9
+        
     - name: unpack-solution action
       uses: microsoft/powerplatform-actions/unpack-solution@v1
       with:
