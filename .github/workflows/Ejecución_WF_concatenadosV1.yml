@@ -37,8 +37,8 @@ jobs:
       #You can specify the solution name here
       solution_name: DEMOSOL01
       #Update your values here
-      solution_exported_folder: /out/exported
-      solution_folder: /solution
+      solution_exported_folder: out/exported/
+      solution_folder: solution/
       solution_target_folder: solution
       INTEA_ENVIRONMENT_URL: https://smartdemointea.crm.dynamics.com
       CLIENT_ID_A: 'a4dedf07-6b5f-4f68-bf14-3dc809f12cc7'
@@ -54,7 +54,7 @@ jobs:
       solution_name: DEMOSOL01
       #Update your values here
       solution_exported_folder: /out/exported
-      solution_folder: /solution
+      solution_folder: solution/
       solution_target_folder: solution
       DESAB_ENVIRONMENT_URL: https://smartdemodesab.crm.dynamics.com
       CLIENT_ID_B: 'a939822b-df70-4c40-a6cb-66446c1c798e'
