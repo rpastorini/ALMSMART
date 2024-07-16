@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<EntityRelationships xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <EntityRelationship Name="business_unit_cr995_detallesdeperfil" />
+  <EntityRelationship Name="lk_cr995_detallesdeperfil_createdby" />
+  <EntityRelationship Name="lk_cr995_detallesdeperfil_modifiedby" />
+  <EntityRelationship Name="owner_cr995_detallesdeperfil" />
+  <EntityRelationship Name="team_cr995_detallesdeperfil" />
+  <EntityRelationship Name="user_cr995_detallesdeperfil" />
+</EntityRelationships>
